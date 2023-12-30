@@ -1,661 +1,1015 @@
 <!DOCTYPE html>
-<html 
-    xmlns="http://www.w3.org/1999/xhtml" 
-    prefix="
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="
         schema: http://schema.org/
         prism: http://prismstandard.org/namespaces/basic/2.0/">
-    <head>
-        <!-- Visualisation requirements (mandatory for optimal reading) -->
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/rash.css"/>
-        
-        <script src="js/jquery.min.js"> </script>
-        <script src="js/bootstrap.min.js"> </script>
-        <script src="js/rash.js"> </script>
-        
-        <!-- MathJax for multi-browser support of LaTeX formulas and MathML -->
-        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"> </script>
-        <!-- /END Visualisation requirements (mandatory for optimal reading) -->
-        
-        <!-- Metadata -->
-        <title property="dcterms:title">AI-enhanced Systematic Literature Reviews Tools: A Survey</title>
-        
-        <!-- Author's data (one or more) -->
-        <meta about="#author-1" name="dc.creator" content="Francisco Bolaños Burgos"/>
-        <meta about="#author-1" property="schema:email" content="francisco.bolanos-burgos@open.ac.uk"/>
-        <link about="#author-1" property="schema:affiliation" href="#organization-1"/>
 
-        <meta about="#author-2" name="dc.creator" content="Angelo Salatino"/>
-        <meta about="#author-2" property="schema:email" content="angelo.salatino@open.ac.uk"/>
-        <link about="#author-2" property="schema:affiliation" href="#organization-1"/>
-        
-        <meta about="#author-3" name="dc.creator" content="Francesco Osborne"/>
-        <meta about="#author-3" property="schema:email" content="francesco.osborne@open.ac.uk"/>
-        <link about="#author-3" property="schema:affiliation" href="#organization-1"/>
-        <link about="#author-3" property="schema:affiliation" href="#organization-2"/>
+<head>
+    <!-- Visualisation requirements (mandatory for optimal reading) -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta about="#author-4" name="dc.creator" content="Enrico Motta"/>
-        <meta about="#author-4" property="schema:email" content="enrico.motta@open.ac.uk"/>
-        <link about="#author-4" property="schema:affiliation" href="#organization-1"/>
-        
-        <!-- Affiliations -->
-        <meta about="#organization-1" property="schema:name" content="Knowledge Media Institute, The Open University, Walton Hall, Milton
-        Keynes, MK7 6AA, UK"/>
-        <meta about="#organization-2" property="schema:name" content="Department of Business and Law, University of Milano Bicocca, Piazza
-        dell’Ateneo Nuovo, 1, Milan, 20126, IT"/>
-        
-        <!-- Paper keywords (one or more) -->
-        <meta property="prism:keyword" content="Systematic Literature Reviews"/>
-        <meta property="prism:keyword" content="Literature Review"/>
-        <meta property="prism:keyword" content="Artificial Intelligence"/>
-        <meta property="prism:keyword" content="Large Language Models"/>
-        <meta property="prism:keyword" content="Natural Language Processing"/>
-        <meta property="prism:keyword" content="Usability"/>
-    </head>
-    <body>
-        <!-- Abstract -->
-        <section role="doc-abstract">
-            <h1>Abstract</h1>
-            <p>This survey presents a comprehensive review of the use of Artificial Intelligence (AI) in Systematic Literature Reviews (SLRs). A SLRs is a rigorous and organised methodology
-                that assesses and integrates previous research on a given topic. Numerous tools have been developed to assist and partially automate the SLR process. The increasing role of AI in this field shows great potential in providing more effective support for researchers, moving towards the semi-automatic creation of literature reviews. 
-                Our study focuses on how AI techniques are applied in the semi-automation of SLRs, specifically in the screening and extraction phases. We examine 21 leading SLR tools using a framework that combines 24 traditional features with 11 AI features. We also analyse 11 recent tools that utilize large language models for searching the literature and assisting academic writing. 
-                The paper discusses current trends in the field, outlines key research challenges, and suggests directions for future research.</p>
-        </section>
-        
-        <!-- Sections -->
-        <section id="first_section">
-            <h1>First level title</h1>
-            <p>A paragraph.</p>
-            <p>Another paragraph.</p>
-            <section>
-                <h1>Second level title</h1>
-                <pre><code>A listing block.</code></pre>
-                <section>
-                    <h1>Third level title</h1>
-                    <blockquote><p>This is a block quotation.</p></blockquote>
-                    <section>
-                        <h1>Fourth level title</h1>
-                        <ul>
-                            <li><p>An item in an unordered list</p></li>
-                            <li><p>Another item in an unordered list</p></li>
-                        </ul>
-                    </section>
-                </section>
-            </section>
-            <section>
-                <h1>Another second level title</h1>
-                <ol>
-                    <li><p>An item in an ordered list</p></li>
-                    <li><p>Another item in an ordered list</p></li>
-                </ol>
-            </section>
-        </section>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/rash.css" />
 
+    <script src="js/jquery.min.js"> </script>
+    <script src="js/bootstrap.min.js"> </script>
+    <script src="js/rash.js"> </script>
 
-        <section id="third_table">
-            <h1>Systematic Literature Review Tools analysed based on General Features</h1>
-            <p></p>
+    <!-- MathJax for multi-browser support of LaTeX formulas and MathML -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"> </script>
+    <!-- /END Visualisation requirements (mandatory for optimal reading) -->
+
+    <!-- Metadata -->
+    <title property="dcterms:title">AI-enhanced Systematic Literature Reviews Tools: A Survey</title>
+
+    <!-- Author's data (one or more) -->
+    <meta about="#author-1" name="dc.creator" content="Francisco Bolaños Burgos" />
+    <meta about="#author-1" property="schema:email" content="francisco.bolanos-burgos@open.ac.uk" />
+    <link about="#author-1" property="schema:affiliation" href="#organization-1" />
+
+    <meta about="#author-2" name="dc.creator" content="Angelo Salatino" />
+    <meta about="#author-2" property="schema:email" content="angelo.salatino@open.ac.uk" />
+    <link about="#author-2" property="schema:affiliation" href="#organization-1" />
+
+    <meta about="#author-3" name="dc.creator" content="Francesco Osborne" />
+    <meta about="#author-3" property="schema:email" content="francesco.osborne@open.ac.uk" />
+    <link about="#author-3" property="schema:affiliation" href="#organization-1" />
+    <link about="#author-3" property="schema:affiliation" href="#organization-2" />
+
+    <meta about="#author-4" name="dc.creator" content="Enrico Motta" />
+    <meta about="#author-4" property="schema:email" content="enrico.motta@open.ac.uk" />
+    <link about="#author-4" property="schema:affiliation" href="#organization-1" />
+
+    <!-- Affiliations -->
+    <meta about="#organization-1" property="schema:name" content="Knowledge Media Institute, The Open University, Walton Hall, Milton
+        Keynes, MK7 6AA, UK" />
+    <meta about="#organization-2" property="schema:name" content="Department of Business and Law, University of Milano Bicocca, Piazza
+        dell’Ateneo Nuovo, 1, Milan, 20126, IT" />
+
+    <!-- Paper keywords (one or more) -->
+    <meta property="prism:keyword" content="Systematic Literature Reviews" />
+    <meta property="prism:keyword" content="Literature Review" />
+    <meta property="prism:keyword" content="Artificial Intelligence" />
+    <meta property="prism:keyword" content="Large Language Models" />
+    <meta property="prism:keyword" content="Natural Language Processing" />
+    <meta property="prism:keyword" content="Usability" />
+</head>
+
+<body>
+    <!-- Abstract -->
+    <section role="doc-abstract">
+        <h1>Abstract</h1>
+        <p>This survey presents a comprehensive review of the use of Artificial Intelligence (AI) in Systematic
+            Literature Reviews (SLRs). A SLRs is a rigorous and organised methodology
+            that assesses and integrates previous research on a given topic. Numerous tools have been developed to
+            assist and partially automate the SLR process. The increasing role of AI in this field shows great potential
+            in providing more effective support for researchers, moving towards the semi-automatic creation of
+            literature reviews.
+            Our study focuses on how AI techniques are applied in the semi-automation of SLRs, specifically in the
+            screening and extraction phases. We examine 21 leading SLR tools using a framework that combines 24
+            traditional features with 11 AI features. We also analyse 11 recent tools that utilize large language models
+            for searching the literature and assisting academic writing.
+            The paper discusses current trends in the field, outlines key research challenges, and suggests directions
+            for future research.</p>
+    </section>
+
+    <section id="intro" role="doc-abstract">
+        <h1>Introduction</h1>
+        <p>In this page, we report the tables we have developed when conducting our analysis on the Systematic Literature Review Tools.</p>
+
+        <a href="#first_table">Screening Phase of Systematic Literature Review Tools analysed through AI Features</a></br>
+        <a href="#second_table">Extraction Phase of Systematic Literature Review Tools analysed through AI Features</a></br>
+        <a href="#third_table">Systematic Literature Review Tools analysed based on AI Features</a></br>
+    </section>
+
+    <!-- Sections -->
+    <section id="first_table">
+        <h1>Screening Phase of Systematic Literature Review Tools analysed through AI Features</h1><a href="#intro">Go up</a>
+        <p></p>
+        <div>
             <table>
                 <thead>
                   <tr>
                     <th>Tool</th>
-                    <th>Multiple user roles</th>
-                    <th>Multiple user support</th>
-                    <th>Project auditing</th>
-                    <th>Project progress</th>
-                    <th>Security</th>
-                    <th>Status of software</th>
-                    <th>Automated full-text retrieval</th>
-                    <th>Automated search</th>
-                    <th>Citations</th>
-                    <th>Manual reference importing </th>
-                    <th>Manually attaching full-text</th>
-                    <th>Reference importing</th>
-                    <th>Deduplication</th>
-                    <th>Discrepancy resolving</th>
-                    <th>In-/excluding references</th>
-                    <th>Reference labelling &amp; comments</th>
-                    <th>Screening phases</th>
-                    <th>Exporting results</th>
-                    <th>Flow diagram creation</th>
-                    <th>Protocol</th>
-                    <th>Living/updatable</th>
-                    <th>Free to use</th>
+                    <th>Research Field</th>
+                    <th>SLR Task</th>
+                    <th>Human Interaction</th>
+                    <th>Approach</th>
+                    <th>Text Representation</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                    <th>Minimum Requirement</th>
+                    <th>Model Execution</th>
+                    <th>Pre-screening Support</th>
+                    <th>Post-Screening Support</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Abstrackr</td>
-                    <td>No multiple user support</td>
-                    <td>Two user support</td>
-                    <td>Yes</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on SMV applying constrained weightspace.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name: Pre classification of papers based on inclusion probability (Not Available).<br>  Range: Information not available.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: Information not available.<br>  Irrelevant papers: Information not available.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: It searches by  keywords that could be color by level of relevance.</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>PMDI,csv,xml</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No distinct phases</td>
-                    <td>csv,xml</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>Colandr</td>
-                    <td>No multiple user support</td>
-                    <td>Two user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>txt, ris, bib</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No distinct phases</td>
-                    <td>csv</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>DistillerSR</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>Yes</td>
-                    <td>PubMed</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>csv; </br>Endnote:enlx;ris;zip;zip(japic)</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>TiAb &amp; full-text phase</td>
-                    <td>No information</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td>EPPI-Reviewer</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Detailed progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>Acces to PubMed API</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Endnote: ris;  </br>Mendeley: ris;ris;pubmed;refworks;wos; psycoINFO; OVID ris</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>TiAb &amp; full-text phase</td>
-                    <td>The screened papers go to the  next stage which is information extraction</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td>LitSuggest</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>Acces to PubMed API</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Pubmed:pmid</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>tsv</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>Nested Knowledge</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Detailed progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>Yes</td>
-                    <td>PubMed;Europe PubMed Central; DOAJ;ClinicalTrials.gov</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>nBIB;ris</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No distinct phases</td>
-                    <td>csv;ris</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td>Rayyan</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Detailed progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Endnote: enw;</br>Pubmed:xml;Pubmed:nbib;</br>WoS:ciw;ris;bib;cvs</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>TiAb &amp; full-text phase</td>
-                    <td>ris,bib,enw,csv</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>RobotAnalyst</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>Acces to PubMed API</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>txt, nbib, ris</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>ris</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>SWIFT-Active Screener</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Detailed progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Pubmed:pmid,xml; </br>Endnote: xml: ris</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>TiAb &amp; full-text phase</td>
-                    <td>csv, json</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                  </tr>
-                  <tr>
-                    <td>SWIFT-Review</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>No project progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Pubmed:pmid,xml</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>txt</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                  </tr>
-                  <tr>
-                    <td>FAST2</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>No project progress</td>
-                    <td>None</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No info</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
                   </tr>
                   <tr>
                     <td>ASReview</td>
-                    <td>No multiple user support</td>
-                    <td>Multiple user support</td>
-                    <td>No</td>
-                    <td>Detailed progress</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on Naive Bayes(default), SMV , logistic regression,  RandoM Forest or Simple NN.</td>
+                    <td>bag of words: Information not available.<br>  embeddings:sentence BERT, doc2vec.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability ( likelihood of relevance).<br>  Range: 0-1.<br>  Threshold: For values greater than 0.5 the papers are marked as relevant.</td>
+                    <td>Relevant papers: 1.<br>  Irrelevant papers:1.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: Basic search trough keywords</td>
                     <td>None</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Endnote: ris; </br>Excel:  csv, xlsx;</br>Mendeley: ris;</br>Refworks: ris; </br>Zotero: ris, csv; </br>CINAHL:ris;</br>Cochrane: ris,csv; </br>Embase:ris,csv,xlsx; </br>Eric:ris; </br>Psychinfo: ris;</br>Scopus:ris,csv;wos:ris</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>csv(UTF-8),tsv(UTF-8),ris</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
                   </tr>
                   <tr>
-                    <td>Research Screener</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
+                    <td>Colandr</td>
+                    <td>Any</td>
+                    <td>Task 1:  Classification of relevant papers given a set of seed papers.<br>  Task 2:  Identification of the category attributed to the paper by the user</td>
+                    <td>Task 1:   The user has to rank papers as relevant and irrelevant.<br>  Task 2:  The user has to assigned categories(tags) to the papers.</td>
+                    <td>Task 1:  Similarity-based method: Identifies co-occurrences of words around the keywords selected by the user (Active Learning).<br>  Task 2:  2.1 NER for  Locations (Active Learning).<br>  2.2 ML classifier for other tags based on logistic regression (Active Learning). </td>
+                    <td>Task 1:  embeddings: Word2vec.<br>  Task 2:  2.1 Information not available.<br>  2.2 embeddings: Glove</td>
+                    <td>Task 1:<br>  The title and  abstract of the paper in the accepted format.<br>  Task 2:<br>  Full-text papers in PDF.</td>
+                    <td>Task 1:  Name:Pre classification of papers based on inclusion probability (relevance).<br>  Range: Information not available.<br>  Threshold: Information not available.<br>  Task 2:  Name:Listing of sentences that best predicts the label (confident).<br>  Range: High, Medium, Low.<br>  Threshold: Information not available.</td>
+                    <td>Task 1:  Relevant papers: 10.<br>  Irrelevant papers:10.<br>  Task 2:  Minimum 50 papers.</td>
+                    <td>Task 1:  Synchronous: the model runs in the background.<br>  Task 2:  Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: It searches by  keywords that could be color by level of relevance.</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Mendeley: xml</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>Endnote: xml</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
                   </tr>
                   <tr>
-                    <td>pitts.ai</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>PubMed</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>ris</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
+                    <td>Covidence</td>
+                    <td>Any</td>
+                    <td>Task 1:  Classification of relevant papers given a set of seed papers.<br>  Task 2:  Identification of biomedical studies(RCTs) based on a pre-built classification model.</td>
+                    <td>Task 1:   The user has to rank papers as relevant and irrelevant.<br>  Task 2:  No user interaction.</td>
+                    <td>Task 1:  ML classifier (Active Learning) based on two ensembles SVM.<br>  Task 2:  ML classifier (Superivised Learning) bassed on SVM (RCT classifier). </td>
+                    <td>Task 1:  bag of words: ngrams.<br>  Task 2:   bag of words: ngrams.</td>
+                    <td>Task 1:  The title and  abstract of the paper in the accepted format.<br>  Task 2:<br>  The title and  abstract of the paper in the accepted format.</td>
+                    <td>Task 1:  Name:Pre classification of papers based on inclusion probability (relevancy prediction).<br>  Range: Information not available.<br>  Threshold: Information not available.<br>  Task 2:  Name:Pre classification of papers based on inclusion probability (not Available)<br>  Range: (0-1)[Possible RCT, Not RCT]<br>  Threshold: For values greater than 0.24 the papers are marked as Possible RCT.<br>  <br>  </td>
+                    <td>Task 1:  Relevant papers: 2.<br>  Irrelevant papers: 2.<br>  Task 2:  Not Applicable.</td>
+                    <td>Information not available.</td>
+                    <td>Keywords search: Basic search trough keywords</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                   </tr>
                   <tr>
-                    <td>SysRev.com</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>PubMed</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>PudMed: pmid;ris;</br>Endnote:enlx; clinical trials;json</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No distinct phases</td>
-                    <td>Endnote: xml;csv</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
+                    <td>DistillerSR</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifiers (Active Learning) based on SVM or Naive Bayes.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Naive Bayes  Name:Pre classification of papers based on inclusion probability (prediction score).<br>  Range: 0-1<br>  Threshold:  For values greater or equal than 0.5 the papers are likely to marked as relevant.<br>  SVM  Name:Pre classification of papers based on binary classification.<br>  Range: (0-1) [Include, Exclude, or Cannot Decide].<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 10.<br>  Irrelevant papers:40.</td>
+                    <td>Information not available.</td>
+                    <td>Keywords search: Basic search trough keywords</td>
+                    <td>None</td>
                   </tr>
                   <tr>
-                    <td>Covidence </td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>No</td>
-                    <td>Limited progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
+                    <td>EPPI-Reviewer</td>
+                    <td>Any</td>
+                    <td>Task 1:<br>  Classification of relevant papers given a set of seed papers.<br>  Task 2:<br>  Identification of biomedical studies (RCTs, Systematic Reviews,  Economic Evaluations,  COVID-19 categories,  long COVID) based on a pre-built classification model.<br>  </td>
+                    <td>Task 1:  The user has to rank papers as relevant and irrelevant.<br>  Task 2:  No user interaction.<br>  </td>
+                    <td>Task 1:  ML classifier (Active Learning) based on SVM. <br>  Task 2:  ML classifier (Superivised Learning) based on SVM for 2.1 and for the others the information is not available.<br>       2.1 Cochrane RCT.<br>       2.2  Origina RCT.<br>       2.3 Systematic Review.<br>       2.4 Economic Evaluations. <br>       2.5 COVID-19 categories.<br>      2.6 Identify Long COVID.</td>
+                    <td>Task 1:  bag of words: ngrams.<br>  Task 2:  The Cochrane RCT classifer uses bag of words. For the other approaches the information is not available.</td>
+                    <td>Task 1:  The title and  abstract of the paper in the accepted format.<br>  Task 2:  The title and  abstract of the paper in the accepted format.</td>
+                    <td>Task 1:  Name:Pre classification of papers based on inclusion probability (probability score).<br>  Range: 0-100<br>  Threshold: Information not available.<br>  Task 2:<br>  Case: Cochrane RCT<br>            Name:Pre classification of papers based on inclusion probability (not Available)<br>            Range: (0-1)[Possible RCT, Not RCT]<br>            Threshold: For values greater than 0.24 the papers are marked as Possible RCT.<br>  <br>  <br>  </td>
+                    <td>Task 1:  Relevant papers: 5.<br>  Irrelevant papers: Information not available.<br>  Task 2:  Not Applicable</td>
+                    <td>Task 1:  Synchronous: the model runs in the background.<br>  Task 2:  Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: It searches by  keywords that could be highlighted;<br>  Tags: It searches by  terms or tags assigned after reading the paper.</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>Endnote: xml; </br>PubMed: xml; crs; ris</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>TiAb &amp; full-text phase</td>
-                    <td>Cochrane Register of Studies; csv; Mendeley; Endnote; Refworks; Zotero</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
                   </tr>
                   <tr>
-                    <td>RobotReviewer /RobotSearch</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>No project progress</td>
+                    <td>FAST2</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on SVM.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability (decision score).<br>  Range: 0-1<br>  Threshold: Information not available.<br>  </td>
+                    <td>Relevant papers: Information not available.<br>  Irrelevant papers: Information not available.</td>
+                    <td>Synchronous: the model runs in the background.</td>
                     <td>None</td>
-                    <td>Stable release</td>
-                    <td>No</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>pdf</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
                   </tr>
                   <tr>
                     <td>Iris.ai</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>Yes</td>
-                    <td>No project progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>No</td>
-                    <td>Core;PubMed; US Patent Office; CORDIS</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>bitext</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No distinct phases</td>
-                    <td>No information</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>No</td>
+                    <td>Any</td>
+                    <td>Clustering of Abstracts</td>
+                    <td>1. Exploratory search: When the researcher is novice or exploring a new field.<br>       1.1 The user has to  provide a seed idea (300-500 words) or a title or abstract of a paper.<br>       1.2  The user has to select the relevant papers from the visual map manually or using the search filter. In the latter he can narrow down the results based on topics or concepts using the analyze tool.<br>  <br>  2. Advanced search: When the researcher has expertise on the topic.<br>       2.1 The user has to select a dataset, it could be retrieved from a database or his own records.<br>       2.2 The user can cluster the results using the search filter option which will allow him to  apply the  analyze tool and/or the context filter.<br>       2.3 The user has to select the relavant papers.<br>       2.4  The user can repeat steps 2.2 and 2.3  until he considers appropriate to stop.<br>  <br>  </td>
+                    <td>Similarity-based method: Matches the fingerprint of the text or abstract with the fingerprints of the papers of the databases CORE, PubMed,  US Patent or CORDIS.(Unsupervised Learning).<br>  <br>  The fingerprint is a vector representation of the most meaningful words and  their synonyms of the text or abstract which has a unique numerical value.  </td>
+                    <td>embeddings: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability (relevance score).<br>  Range: (0-1)[Percentage]<br>  Threshold: 40%-90%</td>
+                    <td>Relevant papers: Not Applicable.<br>  Irrelevant papers: Not Applicable.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: Basic search trough keywords;<br>  Topic Groups: from a global topic (what topics do these articles fall within from an overall scientific level) as well as a specific topic (within this reading list, what topics do the articles fall within) based on visual maps. </td>
+                    <td>Abstractive summarisation based on the selected papers.</td>
                   </tr>
                   <tr>
-                    <td>PICO Portal</td>
-                    <td>Any further role</td>
-                    <td>Multiple user support</td>
-                    <td>Yes</td>
-                    <td>Detailed progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>Yes</td>
+                    <td>LitSuggest</td>
+                    <td>Biomedicine</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier ( Active Learning) based on logistic regression.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability (relevance prediction).<br>  Range: 0-1.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: Information not available.<br>  Irrelevant papers: Information not available.</td>
+                    <td>Synchronous: the model runs in the background.</td>
                     <td>None</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>CINHAL: cvs; </br>Cochrane:bibtex,ris; </br>Endnote:enw,mxl;</br>Generic: bibtex,csv,ris; </br>OVID:ris,xml;</br>PICO Portal: csv,xls; </br>PubMed: csv, nbib, ris,txt,xml; </br>wos:ciw</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                    <td>No distinct phases</td>
-                    <td>No information</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>Yes</td>
+                    <td>None</td>
                   </tr>
                   <tr>
-                    <td>Dextr</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>No project progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>NA</td>
-                    <td>None</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>ris, pdf</td>
-                    <td>NA</td>
-                    <td>No</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>csv, zip</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>Yes</td>
+                    <td>Nested Knowledge</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) which is unkown.</td>
+                    <td>Information not available.</td>
+                    <td>The title and  abstractof the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability (inclusion prediction).<br>  Range: Information not available.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: Information not available.<br>  Irrelevant papers: Information not available.</td>
+                    <td>Information not available.</td>
+                    <td>Keywords search: Basic search trough keywords;<br>  PICO identification: Highlights the parts of a PICO  question in the abstract;</td>
+                    <td>Ontology based on the user classification.</td>
                   </tr>
                   <tr>
-                    <td>ExaCT</td>
-                    <td>No multiple user support</td>
-                    <td>No multiple user support</td>
-                    <td>No</td>
-                    <td>No project progress</td>
-                    <td>Basic authentication mechanism</td>
-                    <td>Stable release</td>
-                    <td>NA</td>
+                    <td>PICOPortal</td>
+                    <td>Any</td>
+                    <td>   Classification of relevant papers given a set of seed papers.<br>  Task 2:  Identification of biomedical studies(RCTs) based on a pre-built classification model.</td>
+                    <td>Task 1:  The user has to rank papers as relevant and irrelevant.<br>  Task 2:<br>  No user interaction.</td>
+                    <td>Task 1:  ML classifier (Active Learning) based on SVM.<br>  Task 2:  ML classifier (Superivised Learning) based voting system implementing decision tree or deep learning.</td>
+                    <td>Task 1:  Information not available.<br>  Task 2:  embeddings: BioBERT.</td>
+                    <td>Task 1:  The title and  abstract of the paper in the accepted format.<br>  Task  2  The title and  abstract of the paper in the accepted format.</td>
+                    <td>Task 1:  NamePre classification of papers based on inclusion probability (not Available)<br>  Range: Information not available.<br>  Threshold: Information not available.<br>  Task 2:  Name:Pre classification of papers based on inclusion probability (not Available)<br>  Range: (0-1)[Possible RCT, Not RCT].<br>  Threshold:  Information not available.</td>
+                    <td>Task 1:  Relevant papers: Information not available.<br>  Irrelevant papers:Information not available.<br>  Task 2:  Not Applicable.</td>
+                    <td>Task 1:  Synchronous: the model runs in the background.  Task 2:<br>  Synchronous: the model runs in the background.<br>  </td>
+                    <td>PICO identification: Highlights the parts of a PICO  question in the abstract.</td>
                     <td>None</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>html PubMed</td>
-                    <td>NA</td>
-                    <td>No</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
+                  </tr>
+                  <tr>
+                    <td>pitts.ai</td>
+                    <td>Biomedicine</td>
+                    <td>Identification of biomedical studies(RCTs) based on a pre-built classification model.</td>
+                    <td>No user interaction.</td>
+                    <td>ML classifier (Superivised Learning) based on SVM.</td>
+                    <td>embeddings:SciBERT</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability (prediction probability).  Range: 0-1.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers:  Not Applicable.<br>  Irrelevant papers:  Not Applicable.</td>
+                    <td>Synchronous: the model runs in the background.</td>
                     <td>None</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>NA</td>
-                    <td>Yes</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>Rayyan</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on SVM.</td>
+                    <td>bag of words:ngrams</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(score probability)<br>  Range: A 5 star scheme, the closer to 5 the  paper be consider as relevant<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 5.<br>  Irrelevant papers:5.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: It searches by  keywords that could be highlighted;<br>  Other searches: It searches by author or publication year;<br>  Boolean Operator: It searches by the combination of boolean operators(AND, OR, NOT) with keywords.</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>Research Screener</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on unkown algorithm.</td>
+                    <td>embeddings: paragraph embedding</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(inclusion probability)<br>  Range: Information not available.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 1.<br>  Irrelevant papers: Information not available.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>None</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>RobotAnalyst</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on SVM.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(inclusion confidence)<br>  Range: 0-1<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: Information not available.  Irrelevant papers: Information not available.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Topic modelling: It assigned  a topic to a paper based on the  most recurrent terms which  could be shared by other papers; clustering: groups paper on the most common terms that are not overlap; Keywords search: searches by keywords; term search: searches by terms(noun phrases)  extracted from the title and abstract; Other criterias: Document id, Publication Year, Author, Type of Publication, Journal, Notes, Time of screening decision,  retrieval method; </td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>RobotReviewer/RobotSearch</td>
+                    <td>Biomedicine</td>
+                    <td> Identification of biomedical studies(RCTs) based on a pre-built classification model.</td>
+                    <td>No user interaction.</td>
+                    <td>ML classifier (Active Learning) based on SVM.</td>
+                    <td>embeddings:SciBERT</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(prediction probability).<br>  Range: 0-1.<br>  Threshold: Not Available.</td>
+                    <td>Relevant papers: Not Applicable.<br>  Irrelevant papers:Not Applicable.</td>
+                    <td>Information not available.</td>
+                    <td>PICO model:  It colour the  different PICO elements.</td>
+                    <td>Pending</td>
+                  </tr>
+                  <tr>
+                    <td>SWIFT-Active Screener</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on log-linear.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(inclusion rate).<br>  Range: 0-1.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 1.<br>  Irrelevant papers:1.</td>
+                    <td>Asynchronous: The model updates every  30 papers. There must be a gap of 2 minutes between the last model built and the current model built.</td>
+                    <td>Keywords search: Basic search trough keywords</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>SWIFT-Review</td>
+                    <td>Biomedicine</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on log-linear.</td>
+                    <td>bag of words: Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(priority  ranking).<br>  Range: 0-1.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 1.<br>  Irrelevant papers:1.</td>
+                    <td>Synchronous: the model runs in the background.</td>
+                    <td>Keywords search: Basic search trough keywords.  <br>  Topic modelling: It assigned  a topic to a paper based on the  most recurrent terms which  could be shared by other papers; Keywor search: searches by keywords or tags;</td>
+                    <td>None</td>
+                  </tr>
+                  <tr>
+                    <td>SysRev.com</td>
+                    <td>Any</td>
+                    <td>Classification of relevant papers given a set of seed papers.</td>
+                    <td>The user has to rank papers as relevant and irrelevant.</td>
+                    <td>ML classifier (Active Learning) based on a customized architecture similar to cross attention.</td>
+                    <td>Information not available.</td>
+                    <td>The title and  abstract of the paper in the accepted format.</td>
+                    <td>Name:Pre classification of papers based on inclusion probability(prediction probability).<br>  Range: Information not available.<br>  Threshold: Information not available.</td>
+                    <td>Relevant papers: 30.<br>  Irrelevant papers: 30.</td>
+                    <td>Asynchronous: The model updates nightly.</td>
+                    <td>None</td>
+                    <td>None</td>
                   </tr>
                 </tbody>
                 </table>
-        </section>
-        
-       
-    </body>
+        </div>
+    </section>
+
+
+    <section id="second_table">
+        <h1>Extraction phase of Systematic Literature Review Tools analysed through AI Features</h1><a href="#intro">Go up</a>
+        <p></p>
+        <div>
+            <table>
+                <thead>
+                  <tr class="d-flex">
+                    <th>Tool</th>
+                    <th>Research Field</th>
+                    <th>SLR Task</th>
+                    <th>Human Interaction</th>
+                    <th>Approach</th>
+                    <th>Text Representation</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RobotReviewer/</br>RobotSearch</td>
+                    <td>Biomedical</td>
+                    <td>Identification of risk of bias.</td>
+                    <td>The user has to upload the papers in PDF format</td>
+                    <td>ML classifier based on the combination of a  lineal model and Convolutional Neural Network (CNN) model. <br> The models are trained on a dataset made of sentences stating the level of risk of bias  manually annotated for each RCT.<br> <br> <br> </td>
+                    <td>Lineal Model Bag of word: ngrams. CNN Model<br> embeddings: embedding layer.<br> </td>
+                    <td>Full-text paper.</td>
+                    <td>Name: Risk of bias classification<br> Range: Low, High, Unclear(there is inssuficient information).<br> Threshold: Information not available.<br> <br> </td>
+                  </tr>
+                  <tr>
+                    <td>ExaCT</td>
+                    <td>Biomedical</td>
+                    <td>NER of RCT.</td>
+                    <td>The user has to upload the papers in HTML format</td>
+                    <td>1. ML classifier  based on SVM.<br> 2. Rule base detection.<br> <br> The model predicts sentences similar  of the pretrained model. Then it selects the enties applying rule based  of the 21 categories.<br> </td>
+                    <td>Bag of words: ngrams.</td>
+                    <td>Full-text paper.</td>
+                    <td>Name: Possible RCT entities.<br> Range: Not Applicable.<br> Threshold: Not Applicable.<br> </td>
+                  </tr>
+                  <tr>
+                    <td>Dextr</td>
+                    <td>Environmental Health Science</td>
+                    <td>Task 1:     NER of animal studies.<br><br>Task 2:     Entity linking of animal studies.</td>
+                    <td>The has to upload the papers in PDF, ris or Endnote format</td>
+                    <td>Task 1: ML Classifier implementing a neural network model based on a bidirectional LSTM with a Conditional Random Field (BI-LSTM-CRF) architecture.<br> Task 2: Customised Ontology. </td>
+                    <td>Task 1: embeddings: GloVe,ELMo.<br> Task 2: Not Applicable.</td>
+                    <td>Title and Abstracts</td>
+                    <td>Task 1: Name: Possible animal entities.<br> Range: Information not  available.<br> Threshold: Information not  available.<br> <br> Task 2: Name: Relationships of animal models and exposures vs experimentas  ot  endpoints vs experiments.<br> Range: Not Applicable.<br> Threshold: Not Applicable.<br> </td>
+                  </tr>
+                  <tr>
+                    <td>Iris.ai</td>
+                    <td>Any</td>
+                    <td>Task 1:     NER of entities required by the user.<br><br>Task 2:     Entity linking of the identified entities.</td>
+                    <td>The user has to upload the PDF files or select them from his dataset. He has to submit the Output Data Layout (ODL) which is a spreedsheet that  contains all the entities he wants the user to extract.</td>
+                    <td>Task 1: ML classifier  which algorithim is unknow.<br> <br> Task 2: Uses a knowledge graph to represent the relations of within the entities on the paper or between the entities of the table. The technical implementation in unkown.<br> </td>
+                    <td>Task 1: embeddings: word embedding.<br> Task 2: Not Applicable.</td>
+                    <td>Full-text paper.</td>
+                    <td>Task 1: Name: Possible entities based on a confidence interval.<br> Range: Not  Available.<br> Threshold: Not  Available.<br> <br> Task 2: Name: Relationships of entities<br> Range: Not Applicable.<br> Threshold: Not Applicable.<br> </td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+    </section>
+
+
+    <section id="third_table">
+        <h1>Systematic Literature Review Tools analysed based on General Features</h1><a href="#intro">Go up</a>
+        <p></p>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Multiple user roles</th>
+                        <th>Multiple user support</th>
+                        <th>Project auditing</th>
+                        <th>Project progress</th>
+                        <th>Security</th>
+                        <th>Status of software</th>
+                        <th>Automated full-text retrieval</th>
+                        <th>Automated search</th>
+                        <th>Citations</th>
+                        <th>Manual reference importing </th>
+                        <th>Manually attaching full-text</th>
+                        <th>Reference importing</th>
+                        <th>Deduplication</th>
+                        <th>Discrepancy resolving</th>
+                        <th>In-/excluding references</th>
+                        <th>Reference labelling &amp; comments</th>
+                        <th>Screening phases</th>
+                        <th>Exporting results</th>
+                        <th>Flow diagram creation</th>
+                        <th>Protocol</th>
+                        <th>Living/updatable</th>
+                        <th>Free to use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Abstrackr</td>
+                        <td>No multiple user support</td>
+                        <td>Two user support</td>
+                        <td>Yes</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>PMDI,csv,xml</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No distinct phases</td>
+                        <td>csv,xml</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Colandr</td>
+                        <td>No multiple user support</td>
+                        <td>Two user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>txt, ris, bib</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No distinct phases</td>
+                        <td>csv</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>DistillerSR</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>Yes</td>
+                        <td>PubMed</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>csv; </br>Endnote:enlx;ris;zip;zip(japic)</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>TiAb &amp; full-text phase</td>
+                        <td>No information</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>EPPI-Reviewer</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Detailed progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>Acces to PubMed API</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Endnote: ris; </br>Mendeley: ris;ris;pubmed;refworks;wos; psycoINFO; OVID ris</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>TiAb &amp; full-text phase</td>
+                        <td>The screened papers go to the next stage which is information extraction</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>LitSuggest</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>Acces to PubMed API</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Pubmed:pmid</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>tsv</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Nested Knowledge</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Detailed progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>Yes</td>
+                        <td>PubMed;Europe PubMed Central; DOAJ;ClinicalTrials.gov</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>nBIB;ris</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No distinct phases</td>
+                        <td>csv;ris</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Rayyan</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Detailed progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Endnote: enw;</br>Pubmed:xml;Pubmed:nbib;</br>WoS:ciw;ris;bib;cvs</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>TiAb &amp; full-text phase</td>
+                        <td>ris,bib,enw,csv</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>RobotAnalyst</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>Acces to PubMed API</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>txt, nbib, ris</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>ris</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>SWIFT-Active Screener</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Detailed progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Pubmed:pmid,xml; </br>Endnote: xml: ris</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>TiAb &amp; full-text phase</td>
+                        <td>csv, json</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>SWIFT-Review</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>No project progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Pubmed:pmid,xml</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>txt</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>FAST2</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>No project progress</td>
+                        <td>None</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No info</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>ASReview</td>
+                        <td>No multiple user support</td>
+                        <td>Multiple user support</td>
+                        <td>No</td>
+                        <td>Detailed progress</td>
+                        <td>None</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Endnote: ris; </br>Excel: csv, xlsx;</br>Mendeley: ris;</br>Refworks: ris; </br>Zotero: ris,
+                            csv; </br>CINAHL:ris;</br>Cochrane: ris,csv; </br>Embase:ris,csv,xlsx; </br>Eric:ris;
+                            </br>Psychinfo: ris;</br>Scopus:ris,csv;wos:ris</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>csv(UTF-8),tsv(UTF-8),ris</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Research Screener</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Mendeley: xml</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>Endnote: xml</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>pitts.ai</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>PubMed</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>ris</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>SysRev.com</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>PubMed</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>PudMed: pmid;ris;</br>Endnote:enlx; clinical trials;json</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No distinct phases</td>
+                        <td>Endnote: xml;csv</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Covidence </td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>No</td>
+                        <td>Limited progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Endnote: xml; </br>PubMed: xml; crs; ris</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>TiAb &amp; full-text phase</td>
+                        <td>Cochrane Register of Studies; csv; Mendeley; Endnote; Refworks; Zotero</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>RobotReviewer /RobotSearch</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>No project progress</td>
+                        <td>None</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>pdf</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Iris.ai</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>Yes</td>
+                        <td>No project progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>No</td>
+                        <td>Core;PubMed; US Patent Office; CORDIS</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>bitext</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No distinct phases</td>
+                        <td>No information</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>PICO Portal</td>
+                        <td>Any further role</td>
+                        <td>Multiple user support</td>
+                        <td>Yes</td>
+                        <td>Detailed progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>Yes</td>
+                        <td>None</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>CINHAL: cvs; </br>Cochrane:bibtex,ris; </br>Endnote:enw,mxl;</br>Generic: bibtex,csv,ris;
+                            </br>OVID:ris,xml;</br>PICO Portal: csv,xls; </br>PubMed: csv, nbib, ris,txt,xml;
+                            </br>wos:ciw</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No distinct phases</td>
+                        <td>No information</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Dextr</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>No project progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>NA</td>
+                        <td>None</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>ris, pdf</td>
+                        <td>NA</td>
+                        <td>No</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>csv, zip</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>ExaCT</td>
+                        <td>No multiple user support</td>
+                        <td>No multiple user support</td>
+                        <td>No</td>
+                        <td>No project progress</td>
+                        <td>Basic authentication mechanism</td>
+                        <td>Stable release</td>
+                        <td>NA</td>
+                        <td>None</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>html PubMed</td>
+                        <td>NA</td>
+                        <td>No</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>None</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>NA</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+</body>
+
 </html>

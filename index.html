@@ -81,12 +81,18 @@
     <h2>Menu</h2>
 
     <ol>
-      <li><a href="#first_table">Screening Phase of Systematic Literature Review Tools analysed through AI
+      <li><a href="#analysis_tables">Systematic Literature Review Tools analysed through AI and Generic
           Features</a></br></li>
-      <li><a href="#second_table">Extraction Phase of Systematic Literature Review Tools analysed through AI
-          Features</a></br></li>
-      <li><a href="#third_table">Systematic Literature Review Tools analysed based on AI Features</a></br></li>
+      <ol>
+        <li><a href="#first_table">Screening Phase of Systematic Literature Review Tools analysed through AI
+            Features</a></br></li>
+        <li><a href="#second_table">Extraction Phase of Systematic Literature Review Tools analysed through AI
+            Features</a></br></li>
+        <li><a href="#third_table">Systematic Literature Review Tools analysed based on AI Features</a></br></li>
+      </ol>
+      <li><a href="#PRISMA_Checklist">Figures of the paper</a></li>
       <li><a href="#PRISMA_Checklist">PRISMA Checklist</a></li>
+      <li><a href="#codebase">Codebase Snowballing</a></li>
       <li><a href="#howtocite">How to cite</a></br></li>
       <li><a href="#license">License</a></li>
 
@@ -95,1033 +101,1133 @@
 
   </section>
 
-  <!-- Sections -->
-  <section id="first_table">
-    <h1>Screening Phase of Systematic Literature Review Tools analysed through AI Features</h1>
-    <p></p>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Tool</th>
-            <th>Research Field</th>
-            <th style="padding: 0px 100px;">SLR Task</th>
-            <th style="padding: 0px 100px;">Human Interaction</th>
-            <th style="padding: 0px 100px;">Approach</th>
-            <th>Text Representation</th>
-            <th style="padding: 0px 100px;">Input</th>
-            <th style="padding: 0px 130px;">Output</th>
-            <th>Minimum Requirement</th>
-            <th style="padding: 0px 70px;">Model Execution</th>
-            <th style="padding: 0px 100px;">Pre-screening Support</th>
-            <th>Post-Screening Support</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Abstrackr</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on SMV applying constrained weightspace.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability.</td>
-            <td>-</td>
-            <td>Synchronous: the model updates in the background as soon as a new paper is added.</td>
-            <td>Keywords search: It searches by keywords that could be color by level of relevance.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>ASReview</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on Naive Bayes(default), SMV , logistic regression, RandoM Forest
-              or Simple NN.</td>
-            <td>Bag of words.<br> Embeddings: SentenceBERT, doc2vec.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (likelihood of relevance from 0 to 1). For
-              values greater than 0.5 the papers are marked as relevant.</td>
-            <td>Relevant papers: 1.<br> Irrelevant papers: 1.</td>
-            <td>Synchronous</td>
-            <td>Keywords search: Basic search trough keywords</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Colandr</td>
-            <td>Any</td>
-            <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of the category attributed to the
-              paper by the user.</td>
-            <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: The user has to assigned categories
-              (tags) to the papers.</td>
-            <td>Task 1: Similarity-based method: Identifies co-occurrences of words around the keywords selected by the
-              user (Active Learning).<br> Task 2: NER for Locations (Active Learning). ML classifier for other tags
-              based on logistic regression (Active Learning).</td>
-            <td>Task 1: Embeddings: Word2vec.<br> Task 2: Embeddings: Glove</td>
-            <td>Task 1: Title &amp; Abstract<br> Task 2: Full content</td>
-            <td>Task 1: Pre classification of papers based on inclusion probability (relevance).<br> Task 2: Listing of
-              sentences that best predicts the label (High, Medium, Low).</td>
-            <td>Task 1: 10 relevant papers and 10 irrelevant papers.<br> Task 2: Minimum 50 papers.</td>
-            <td>Synchronous for both tasks</td>
-            <td>Keywords search: It searches by keywords that could be color by level of relevance.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Covidence</td>
-            <td>Any</td>
-            <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs).</td>
-            <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
-            <td>Task 1: ML classifier (Active Learning) based on two ensembles SVM.<br> Task 2: ML classifier
-              (Superivised Learning) bassed on SVM (RCT classifier).</td>
-            <td>Bag of words for both tasks: ngrams.</td>
-            <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
-            <td>Task 1: Pre classification of papers based on inclusion probability (relevancy prediction).<br> Task 2:
-              Pre classification of papers based on inclusion probability (from 0 to 1). For values greater than 0.24
-              the papers are marked as Possible RCT.</td>
-            <td>Task 1: 2 relevant papers and 2 irrelevant papers.<br> Task 2: Not Applicable.</td>
-            <td>-</td>
-            <td>Keywords search: Basic search trough keywords</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>DistillerSR</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifiers (Active Learning) based on SVM or Naive Bayes.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Naive Bayes: Pre classification of papers based on inclusion probability (prediction score from 0 to 1).
-              For values greater or equal than 0.5 the papers are likely to marked as relevant.<br> SVM: Pre
-              classification of papers based on binary classification (from 0 to 1 and then define Include, Exclude, or
-              Cannot Decide).</td>
-            <td>Relevant papers: 10.<br> Irrelevant papers: 40.</td>
-            <td>-</td>
-            <td>Keywords search: Basic search trough keywords</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>EPPI-Reviewer</td>
-            <td>Any</td>
-            <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs,
-              Systematic Reviews, Economic Evaluations, COVID-19 categories, long COVID).</td>
-            <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
-            <td>Task 1: ML classifier (Active Learning) based on SVM. <br> Task 2: ML classifier (Superivised Learning)
-              based on SVM for Cochrane RCT. For Origina RCT, Systematic Review, Economic Evaluations, COVID-19
-              categories, and Identify Long COVID the information is not available.</td>
-            <td>Task 1: Bag of words (ngrams).<br> Task 2: The Cochrane RCT classifer uses bag of words. For the other
-              approaches the information is not available.</td>
-            <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
-            <td>Task 1: Pre classification of papers based on inclusion probability (probability score from 0 to
-              100).<br> Task 2: Pre classification of papers based on inclusion probability (from 0 to 1). For values
-              greater than 0.24 the papers are marked as Possible RCT.</td>
-            <td>Task 1: 5 relevant papers. Number of irrelevant papers not available.<br> Task 2: Not Applicable</td>
-            <td>Synchronous for both tasks</td>
-            <td>Keywords search: It searches by keywords that could be highlighted;<br> Tags: It searches by terms or
-              tags assigned after reading the paper.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>FAST2</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on SVM.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (decision score from 0 to 1).</td>
-            <td>-</td>
-            <td>Synchronous</td>
-            <td>NO</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Iris.ai</td>
-            <td>Any</td>
-            <td>Clustering of Abstracts</td>
-            <td>Task 1: Exploratory search: When the researcher is novice or exploring a new field.<br> 1.1 Provide a
-              seed idea (300-500 words) or a title or abstract of a paper.<br> 1.2 Select the relevant papers from the
-              visual map manually or using the search filter. In the latter they can narrow down the results based on
-              topics or concepts using the analyze tool.<br> <br> Task 2: Advanced search: When the researcher has
-              expertise on the topic.<br> 2.1 Dataset selection (online database or their own records).<br> 2.2
-              Clustering of results with the search filter option which will allow him to apply the analyze tool and/or
-              the context filter.<br> 2.3 Selection of the relavant papers.<br> 2.4 Repeat steps 2.2 and 2.3 until they
-              considers appropriate to stop.</td>
-            <td>Similarity-based method: Matches the fingerprint of the text or abstract with the fingerprints of the
-              papers of the databases CORE, PubMed, US Patent or CORDIS (Unsupervised Learning).<br> The fingerprint is
-              a vector representation of the most meaningful words and their synonyms of the text or abstract.</td>
-            <td>Embeddings.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (relevance score from 0 to 1 with threshold
-              being 0.4 and 0.9).</td>
-            <td>Not Applicable</td>
-            <td>Synchronous</td>
-            <td>Keywords search: Basic search trough keywords;<br> Topic Groups: from a global topic (what topics do
-              these articles fall within from an overall scientific level) as well as a specific topic (within this
-              reading list, what topics do the articles fall within) based on visual maps.</td>
-            <td>Abstractive summarisation based on the selected papers.</td>
-          </tr>
-          <tr>
-            <td>LitSuggest</td>
-            <td>Biomedicine</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on logistic regression.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (relevance prediction from 0 to 1).</td>
-            <td>-</td>
-            <td>Synchronous</td>
-            <td>NO</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Nested Knowledge</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) which is unkown.</td>
-            <td>-</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (inclusion prediction).</td>
-            <td>-</td>
-            <td>-</td>
-            <td>Keywords search: Basic search trough keywords;<br> PICO identification: Highlights the parts of a PICO
-              question in the abstract;</td>
-            <td>Ontology based on the user classification.</td>
-          </tr>
-          <tr>
-            <td>PICOPortal</td>
-            <td>Any</td>
-            <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs).</td>
-            <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
-            <td>Task 1: ML classifier (Active Learning) based on SVM.<br> Task 2: ML classifier (Superivised Learning)
-              based voting system implementing decision tree or deep learning.</td>
-            <td>Embeddings for task 2: BioBERT.<br> No information regardin Task 1.</td>
-            <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
-            <td>Task 1: Pre classification of papers based on inclusion probability.<br> Task 2: Pre classification of
-              papers based on inclusion probability (from 0 to 1).</td>
-            <td>-</td>
-            <td>Synchronous for both tasks</td>
-            <td>PICO identification: Highlights the parts of a PICO question in the abstract.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>pitts.ai</td>
-            <td>Biomedicine</td>
-            <td>Identification of biomedical studies (RCTs).</td>
-            <td>No user interaction.</td>
-            <td>ML classifier (Superivised Learning) based on SVM.</td>
-            <td>Embeddings: SciBERT</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (prediction probability from 0 to 1).</td>
-            <td>Not Applicable</td>
-            <td>Synchronous</td>
-            <td>NO</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Rayyan</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on SVM.</td>
-            <td>Bag of words: ngrams</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (score probability).<br> The score is based
-              on a 5 star scheme, higher score identifies the relevant papers.</td>
-            <td>Relevant papers: 5.<br> Irrelevant papers: 5.</td>
-            <td>Synchronous</td>
-            <td>Keywords search: It searches by keywords that could be highlighted;<br> Other searches: It searches by
-              author or publication year;<br> Boolean Operator: It searches by the combination of boolean operators(AND,
-              OR, NOT) with keywords.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>Research Screener</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on unkown algorithm.</td>
-            <td>Embeddings: paragraph embedding</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (inclusion probability).</td>
-            <td>Relevant papers: 1.<br> Irrelevant papers: Information not available.</td>
-            <td>Synchronous</td>
-            <td>NO</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>RobotAnalyst</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on SVM.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (inclusion confidence from 0 to 1).</td>
-            <td>-</td>
-            <td>Synchronous</td>
-            <td>Topic modelling: It assigned a topic to a paper based on the most recurrent terms which could be shared
-              by other papers; <br> Clustering: groups paper on the most common terms; <br> Keywords/Term search:
-              searches by keywords or terms(noun phrases); <br> Other criterias: Document id, Publication Year, Author,
-              Type of Publication, Journal, Notes, Time of screening decision, retrieval method;</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>RobotReviewer/RobotSearch</td>
-            <td>Biomedicine</td>
-            <td>Identification of biomedical studies (RCTs).</td>
-            <td>No user interaction.</td>
-            <td>ML classifier (Active Learning) based on SVM.</td>
-            <td>Embeddings: SciBERT</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (prediction probability from 0 to 1).</td>
-            <td>Relevant papers: NA.<br> Irrelevant papers: NA.</td>
-            <td>-</td>
-            <td>PICO model: It colours the different PICO elements.</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>SWIFT-Active Screener</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on log-linear.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (inclusion rate from 0 to 1).</td>
-            <td>Relevant papers: 1.<br> Irrelevant papers:1.</td>
-            <td>Asynchronous: The model updates every 30 papers. There must be a gap of 2 minutes between the last model
-              built and the current model built.</td>
-            <td>Keywords search: Basic search trough keywords</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>SWIFT-Review</td>
-            <td>Biomedicine</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on log-linear.</td>
-            <td>Bag of words.</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (priority ranking from 0 to 1).</td>
-            <td>Relevant papers: 1.<br> Irrelevant papers:1.</td>
-            <td>Synchronous</td>
-            <td>Keywords search: Basic search trough keywords.<br> Topic modelling: It assigned a topic to a paper based
-              on the most recurrent terms which could be shared by other papers; Keywor search: searches by keywords or
-              tags;</td>
-            <td>NO</td>
-          </tr>
-          <tr>
-            <td>SysRev.com</td>
-            <td>Any</td>
-            <td>Classification of relevant papers.</td>
-            <td>Ranking papers as relevant and irrelevant.</td>
-            <td>ML classifier (Active Learning) based on a customized architecture similar to cross attention.</td>
-            <td>-</td>
-            <td>Title &amp; Abstract</td>
-            <td>Pre classification of papers based on inclusion probability (prediction probability).</td>
-            <td>Relevant papers: 30.<br> Irrelevant papers: 30.</td>
-            <td>Asynchronous: The model updates nightly.</td>
-            <td>NO</td>
-            <td>NO</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>-: No information available</p>
+  <section id="analysis_tables">
+    <h1>Systematic Literature Review Tools analysed through AI and Generic Features</h1>
+
+    <p>In this section, we report three tables that describe the 21 systematic literature review tools examined
+      according to both generic and AI-based features. In <a href="#first_table">Section 1.1</a> and <a
+        href="#second_table">Section 1.2</a>, we present the analysis of the AI features for the screening and the
+      extraction phases, respectively.
+      In <a href="#third_table">Section 1.3</a>, we report the analysis of the tools according to the generic features.
+      A copy of these tables is persistently available on ORKG. </p>
+    <a href="https://doi.org/10.48366/R675546" target="_blank" class="btn btn-primary mt-5" role="button">Explore these
+      tables on ORKG</a>
+
+    <div id="first_table">
+      <h2>Screening Phase of Systematic Literature Review Tools analysed through AI Features</h2>
+      <p></p>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Research Field</th>
+              <th style="padding: 0px 100px;">SLR Task</th>
+              <th style="padding: 0px 100px;">Human Interaction</th>
+              <th style="padding: 0px 100px;">Approach</th>
+              <th>Text Representation</th>
+              <th style="padding: 0px 100px;">Input</th>
+              <th style="padding: 0px 130px;">Output</th>
+              <th>Minimum Requirement</th>
+              <th style="padding: 0px 70px;">Model Execution</th>
+              <th style="padding: 0px 100px;">Pre-screening Support</th>
+              <th>Post-Screening Support</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Abstrackr</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on SMV applying constrained weightspace.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability.</td>
+              <td>-</td>
+              <td>Synchronous: the model updates in the background as soon as a new paper is added.</td>
+              <td>Keywords search: It searches by keywords that could be color by level of relevance.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>ASReview</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on Naive Bayes(default), SMV , logistic regression, RandoM
+                Forest
+                or Simple NN.</td>
+              <td>Bag of words.<br> Embeddings: SentenceBERT, doc2vec.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (likelihood of relevance from 0 to 1). For
+                values greater than 0.5 the papers are marked as relevant.</td>
+              <td>Relevant papers: 1.<br> Irrelevant papers: 1.</td>
+              <td>Synchronous</td>
+              <td>Keywords search: Basic search trough keywords</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Colandr</td>
+              <td>Any</td>
+              <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of the category attributed to
+                the
+                paper by the user.</td>
+              <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: The user has to assigned categories
+                (tags) to the papers.</td>
+              <td>Task 1: Similarity-based method: Identifies co-occurrences of words around the keywords selected by
+                the
+                user (Active Learning).<br> Task 2: NER for Locations (Active Learning). ML classifier for other tags
+                based on logistic regression (Active Learning).</td>
+              <td>Task 1: Embeddings: Word2vec.<br> Task 2: Embeddings: Glove</td>
+              <td>Task 1: Title &amp; Abstract<br> Task 2: Full content</td>
+              <td>Task 1: Pre classification of papers based on inclusion probability (relevance).<br> Task 2: Listing
+                of
+                sentences that best predicts the label (High, Medium, Low).</td>
+              <td>Task 1: 10 relevant papers and 10 irrelevant papers.<br> Task 2: Minimum 50 papers.</td>
+              <td>Synchronous for both tasks</td>
+              <td>Keywords search: It searches by keywords that could be color by level of relevance.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Covidence</td>
+              <td>Any</td>
+              <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs).
+              </td>
+              <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
+              <td>Task 1: ML classifier (Active Learning) based on two ensembles SVM.<br> Task 2: ML classifier
+                (Superivised Learning) bassed on SVM (RCT classifier).</td>
+              <td>Bag of words for both tasks: ngrams.</td>
+              <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
+              <td>Task 1: Pre classification of papers based on inclusion probability (relevancy prediction).<br> Task
+                2:
+                Pre classification of papers based on inclusion probability (from 0 to 1). For values greater than 0.24
+                the papers are marked as Possible RCT.</td>
+              <td>Task 1: 2 relevant papers and 2 irrelevant papers.<br> Task 2: Not Applicable.</td>
+              <td>-</td>
+              <td>Keywords search: Basic search trough keywords</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>DistillerSR</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifiers (Active Learning) based on SVM or Naive Bayes.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Naive Bayes: Pre classification of papers based on inclusion probability (prediction score from 0 to
+                1).
+                For values greater or equal than 0.5 the papers are likely to marked as relevant.<br> SVM: Pre
+                classification of papers based on binary classification (from 0 to 1 and then define Include, Exclude,
+                or
+                Cannot Decide).</td>
+              <td>Relevant papers: 10.<br> Irrelevant papers: 40.</td>
+              <td>-</td>
+              <td>Keywords search: Basic search trough keywords</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>EPPI-Reviewer</td>
+              <td>Any</td>
+              <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs,
+                Systematic Reviews, Economic Evaluations, COVID-19 categories, long COVID).</td>
+              <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
+              <td>Task 1: ML classifier (Active Learning) based on SVM. <br> Task 2: ML classifier (Superivised
+                Learning)
+                based on SVM for Cochrane RCT. For Origina RCT, Systematic Review, Economic Evaluations, COVID-19
+                categories, and Identify Long COVID the information is not available.</td>
+              <td>Task 1: Bag of words (ngrams).<br> Task 2: The Cochrane RCT classifer uses bag of words. For the other
+                approaches the information is not available.</td>
+              <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
+              <td>Task 1: Pre classification of papers based on inclusion probability (probability score from 0 to
+                100).<br> Task 2: Pre classification of papers based on inclusion probability (from 0 to 1). For values
+                greater than 0.24 the papers are marked as Possible RCT.</td>
+              <td>Task 1: 5 relevant papers. Number of irrelevant papers not available.<br> Task 2: Not Applicable</td>
+              <td>Synchronous for both tasks</td>
+              <td>Keywords search: It searches by keywords that could be highlighted;<br> Tags: It searches by terms or
+                tags assigned after reading the paper.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>FAST2</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on SVM.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (decision score from 0 to 1).</td>
+              <td>-</td>
+              <td>Synchronous</td>
+              <td>NO</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Iris.ai</td>
+              <td>Any</td>
+              <td>Clustering of Abstracts</td>
+              <td>Task 1: Exploratory search: When the researcher is novice or exploring a new field.<br> 1.1 Provide a
+                seed idea (300-500 words) or a title or abstract of a paper.<br> 1.2 Select the relevant papers from the
+                visual map manually or using the search filter. In the latter they can narrow down the results based on
+                topics or concepts using the analyze tool.<br> <br> Task 2: Advanced search: When the researcher has
+                expertise on the topic.<br> 2.1 Dataset selection (online database or their own records).<br> 2.2
+                Clustering of results with the search filter option which will allow him to apply the analyze tool
+                and/or
+                the context filter.<br> 2.3 Selection of the relavant papers.<br> 2.4 Repeat steps 2.2 and 2.3 until
+                they
+                considers appropriate to stop.</td>
+              <td>Similarity-based method: Matches the fingerprint of the text or abstract with the fingerprints of the
+                papers of the databases CORE, PubMed, US Patent or CORDIS (Unsupervised Learning).<br> The fingerprint
+                is
+                a vector representation of the most meaningful words and their synonyms of the text or abstract.</td>
+              <td>Embeddings.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (relevance score from 0 to 1 with
+                threshold
+                being 0.4 and 0.9).</td>
+              <td>Not Applicable</td>
+              <td>Synchronous</td>
+              <td>Keywords search: Basic search trough keywords;<br> Topic Groups: from a global topic (what topics do
+                these articles fall within from an overall scientific level) as well as a specific topic (within this
+                reading list, what topics do the articles fall within) based on visual maps.</td>
+              <td>Abstractive summarisation based on the selected papers.</td>
+            </tr>
+            <tr>
+              <td>LitSuggest</td>
+              <td>Biomedicine</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on logistic regression.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (relevance prediction from 0 to 1).</td>
+              <td>-</td>
+              <td>Synchronous</td>
+              <td>NO</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Nested Knowledge</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) which is unkown.</td>
+              <td>-</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (inclusion prediction).</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Keywords search: Basic search trough keywords;<br> PICO identification: Highlights the parts of a PICO
+                question in the abstract;</td>
+              <td>Ontology based on the user classification.</td>
+            </tr>
+            <tr>
+              <td>PICOPortal</td>
+              <td>Any</td>
+              <td>Task 1: Classification of relevant papers.<br> Task 2: Identification of biomedical studies (RCTs).
+              </td>
+              <td>Task 1: Ranking papers as relevant and irrelevant.<br> Task 2: No user interaction.</td>
+              <td>Task 1: ML classifier (Active Learning) based on SVM.<br> Task 2: ML classifier (Superivised Learning)
+                based voting system implementing decision tree or deep learning.</td>
+              <td>Embeddings for task 2: BioBERT.<br> No information regardin Task 1.</td>
+              <td>Task 1: Title &amp; Abstract<br> Task 2: Title &amp; Abstract</td>
+              <td>Task 1: Pre classification of papers based on inclusion probability.<br> Task 2: Pre classification of
+                papers based on inclusion probability (from 0 to 1).</td>
+              <td>-</td>
+              <td>Synchronous for both tasks</td>
+              <td>PICO identification: Highlights the parts of a PICO question in the abstract.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>pitts.ai</td>
+              <td>Biomedicine</td>
+              <td>Identification of biomedical studies (RCTs).</td>
+              <td>No user interaction.</td>
+              <td>ML classifier (Superivised Learning) based on SVM.</td>
+              <td>Embeddings: SciBERT</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (prediction probability from 0 to 1).</td>
+              <td>Not Applicable</td>
+              <td>Synchronous</td>
+              <td>NO</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Rayyan</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on SVM.</td>
+              <td>Bag of words: ngrams</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (score probability).<br> The score is
+                based
+                on a 5 star scheme, higher score identifies the relevant papers.</td>
+              <td>Relevant papers: 5.<br> Irrelevant papers: 5.</td>
+              <td>Synchronous</td>
+              <td>Keywords search: It searches by keywords that could be highlighted;<br> Other searches: It searches by
+                author or publication year;<br> Boolean Operator: It searches by the combination of boolean
+                operators(AND,
+                OR, NOT) with keywords.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>Research Screener</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on unkown algorithm.</td>
+              <td>Embeddings: paragraph embedding</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (inclusion probability).</td>
+              <td>Relevant papers: 1.<br> Irrelevant papers: Information not available.</td>
+              <td>Synchronous</td>
+              <td>NO</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>RobotAnalyst</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on SVM.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (inclusion confidence from 0 to 1).</td>
+              <td>-</td>
+              <td>Synchronous</td>
+              <td>Topic modelling: It assigned a topic to a paper based on the most recurrent terms which could be
+                shared
+                by other papers; <br> Clustering: groups paper on the most common terms; <br> Keywords/Term search:
+                searches by keywords or terms(noun phrases); <br> Other criterias: Document id, Publication Year,
+                Author,
+                Type of Publication, Journal, Notes, Time of screening decision, retrieval method;</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>RobotReviewer/RobotSearch</td>
+              <td>Biomedicine</td>
+              <td>Identification of biomedical studies (RCTs).</td>
+              <td>No user interaction.</td>
+              <td>ML classifier (Active Learning) based on SVM.</td>
+              <td>Embeddings: SciBERT</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (prediction probability from 0 to 1).</td>
+              <td>Relevant papers: NA.<br> Irrelevant papers: NA.</td>
+              <td>-</td>
+              <td>PICO model: It colours the different PICO elements.</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>SWIFT-Active Screener</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on log-linear.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (inclusion rate from 0 to 1).</td>
+              <td>Relevant papers: 1.<br> Irrelevant papers:1.</td>
+              <td>Asynchronous: The model updates every 30 papers. There must be a gap of 2 minutes between the last
+                model
+                built and the current model built.</td>
+              <td>Keywords search: Basic search trough keywords</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>SWIFT-Review</td>
+              <td>Biomedicine</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on log-linear.</td>
+              <td>Bag of words.</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (priority ranking from 0 to 1).</td>
+              <td>Relevant papers: 1.<br> Irrelevant papers:1.</td>
+              <td>Synchronous</td>
+              <td>Keywords search: Basic search trough keywords.<br> Topic modelling: It assigned a topic to a paper
+                based
+                on the most recurrent terms which could be shared by other papers; Keywor search: searches by keywords
+                or
+                tags;</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>SysRev.com</td>
+              <td>Any</td>
+              <td>Classification of relevant papers.</td>
+              <td>Ranking papers as relevant and irrelevant.</td>
+              <td>ML classifier (Active Learning) based on a customized architecture similar to cross attention.</td>
+              <td>-</td>
+              <td>Title &amp; Abstract</td>
+              <td>Pre classification of papers based on inclusion probability (prediction probability).</td>
+              <td>Relevant papers: 30.<br> Irrelevant papers: 30.</td>
+              <td>Asynchronous: The model updates nightly.</td>
+              <td>NO</td>
+              <td>NO</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>-: No information available</p>
+      </div>
+      <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
+        class="btn btn-primary mt-5" role="button">Download Table</a>
     </div>
-    <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
-      class="btn btn-primary mt-5" role="button">Download Table</a>
+
+
+    <div id="second_table">
+      <h2>Extraction phase of Systematic Literature Review Tools analysed through AI Features</h2>
+      <p></p>
+      <div>
+        <table>
+          <thead>
+            <tr class="d-flex">
+              <th>Tool</th>
+              <th>Research Field</th>
+              <th>SLR Task</th>
+              <th style="padding: 0px 100px;">Approach</th>
+              <th>Text Representation</th>
+              <th>Input</th>
+              <th style="padding: 0px 100px;">Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RobotReviewer/RobotSearch</td>
+              <td>Biomedical</td>
+              <td>Identifies risks of bias: how reliable are the results?</td>
+              <td>ML classifier, combining a lineal model and a Convolutional Neural Network (CNN) model. <br> These
+                models are trained on a dataset containing manually annotated sentences stating the level of bias.</td>
+              <td>Bag of word: ngrams.<br> Embeddings: embedding layer from CNN Model.</td>
+              <td>Full-text paper.</td>
+              <td>Risk of bias classification (as Low, High, Unclear)</td>
+            </tr>
+            <tr>
+              <td>ExaCT</td>
+              <td>Biomedical</td>
+              <td>NER of Randomised Controlled Trials</td>
+              <td>Task 1: ML classifier based on SVM to identify sentences regarding a control trial.<br> Task 2: Rule
+                base detection to identify the 21 CONSORT categories.</td>
+              <td>Bag of words: ngrams.</td>
+              <td>Full-text paper.</td>
+              <td>Possible RCT entities</td>
+            </tr>
+            <tr>
+              <td>Dextr</td>
+              <td>Environmental Health Science</td>
+              <td>Task 1: NER of animal studies.<br> Task 2: Entity linking of animal studies.</td>
+              <td>Task 1: ML Classifier implementing a neural network model based on bidirectional LSTM with a
+                Conditional
+                Random Field (BI-LSTM-CRF) architecture.<br> Task 2: Linking according to a customised ontology</td>
+              <td>Task 1: Embeddings: GloVe, ELMo.<br> Task 2: Not Applicable.</td>
+              <td>Title and Abstracts</td>
+              <td>Task 1: Possible animal entities.<br> Task 2: Relationships of animal models and exposures vs
+                experimentas ot endpoints vs experiments.</td>
+            </tr>
+            <tr>
+              <td>Iris.ai</td>
+              <td>Any</td>
+              <td>Task 1: NER of entities selected by the user.<br> Task 2: Entity linking of the identified entities.
+              </td>
+              <td>Task 1: ML classifier. Algorithim is unknown.<br> Task 2: Uses a knowledge graph to represent the
+                relations of within the entities on the paper or between the entities of the table. The technical
+                implementation is unknown.</td>
+              <td>Task 1: Embeddings: word embedding.<br> Task 2: Not Applicable.</td>
+              <td>Full-text paper.</td>
+              <td>Task 1: Possible entities based on a confidence interval.<br> Task 2: Additional semantics on the
+                extracted entities.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
+        class="btn btn-primary mt-5" role="button">Download Table</a>
+    </div>
+
+
+    <div id="third_table">
+      <h2>Systematic Literature Review Tools analysed based on General Features</h2>
+      <p></p>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Multiplatform</th>
+              <th>Multiple user roles</th>
+              <th>Multiple user support</th>
+              <th>Project auditing</th>
+              <th>Project progress</th>
+              <th>Authentication</th>
+              <th>Status of software</th>
+              <th>Automated full-text retrieval</th>
+              <th>Automated search</th>
+              <th>Snowballing</th>
+              <th>Manual reference importing</th>
+              <th>Manually attaching full-text</th>
+              <th>Reference importing</th>
+              <th>Deduplication</th>
+              <th>Discrepancy resolving</th>
+              <th>In-/excluding references</th>
+              <th>Reference labelling &amp; comments</th>
+              <th>Screening phases</th>
+              <th>Exporting results</th>
+              <th>Flow diagram creation</th>
+              <th>Protocol</th>
+              <th>Living/updatable</th>
+              <th>Free to use</th>
+              <th>SLR stage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Abstrackr</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>2</td>
+              <td>Yes</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>PMID; csv; xml</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract</td>
+              <td>csv; xml</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Colandr</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>2</td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>txt; ris; bib</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract</td>
+              <td>csv</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>DistillerSR</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>Yes</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>csv; enlx; ris; zip; zip(japic)</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract + Full Content</td>
+              <td>-</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>EPPI-Reviewer</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Detailed </td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>ris; PMID; ciw;</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract + Full Content</td>
+              <td>The screened papers go to the next stage which is information&nbsp;&nbsp;&nbsp;extraction</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>LitSuggest</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>PMID</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>tsv</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Nested Knowledge</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Detailed</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>Yes</td>
+              <td>PubMed; Europe PMC; DOAJ; ClinicalTrials.gov</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>nBIB; ris</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract</td>
+              <td>csv; ris</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Rayyan</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Detailed </td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>enw; xml; nbib; ciw; ris; bib; cvs</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract + Full Content</td>
+              <td>ris; bib; enw; csv</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>RobotAnalyst</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>txt; nbib; ris</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>ris</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>SWIFT-Active Screener</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Detailed </td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>PMID; xml; ris</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract + Full Content</td>
+              <td>csv; json</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>SWIFT-Review</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>PMID; xml</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>txt</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>FAST2</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>None</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>-</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>No export available</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>ASReview</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>&gt;1 </td>
+              <td>No</td>
+              <td>Detailed </td>
+              <td>None</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>ris; csv, xlsx; </td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>csv; tsv; ris</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Research Screener</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>xml</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>xml</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>pitts.ai</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>ris</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>No export available</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>SysRev.com</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>PubMed</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>pmid; ris; enlx; json</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract</td>
+              <td>xml; csv</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Covidence</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>No</td>
+              <td>Limited</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>xml; crs; ris</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract + Full Content</td>
+              <td>csv; ris</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>RobotReviewer /RobotSearch</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>None</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>pdf</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>No export available</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening + Extraction</td>
+            </tr>
+            <tr>
+              <td>Iris.ai</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>No</td>
+              <td>CORE; PubMed; US Patent Office; CORDIS</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>bibtex</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Title &amp; Abstract</td>
+              <td>-</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Screening + Extraction</td>
+            </tr>
+            <tr>
+              <td>PICO Portal</td>
+              <td>Yes</td>
+              <td>Multiple</td>
+              <td>&gt;1 </td>
+              <td>Yes</td>
+              <td>Detailed </td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>Yes</td>
+              <td>None</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>csv; bibtex; ris; enw; xml; xls; txt; ciw</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Title &amp; Abstract</td>
+              <td>-</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Screening</td>
+            </tr>
+            <tr>
+              <td>Dextr</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>NA</td>
+              <td>None</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>ris, pdf</td>
+              <td>NA</td>
+              <td>No</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>Not applicable</td>
+              <td>csv; zip</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>Yes</td>
+              <td>Extraction</td>
+            </tr>
+            <tr>
+              <td>ExaCT</td>
+              <td>Yes</td>
+              <td>Single</td>
+              <td>No</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Basic</td>
+              <td>Stable release</td>
+              <td>NA</td>
+              <td>None</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>xml</td>
+              <td>NA</td>
+              <td>No</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>Not applicable</td>
+              <td>No export available</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>NA</td>
+              <td>Yes</td>
+              <td>Extraction</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>-: No information available<br>
+          NA: Not applicable because the tools are specifically for extraction</p>
+      </div>
+      <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
+        class="btn btn-primary mt-5" role="button">Download Table</a>
+    </div>
+
   </section>
 
+  <section id="paper_figures">
+    <h1>Figures of the paper</h1>
+    <p>
+      In this section we attach all the figures of the mauscript in high defininition (300DPI).
+    </p>
 
-  <section id="second_table">
-    <h1>Extraction phase of Systematic Literature Review Tools analysed through AI Features</h1>
-    <p></p>
-    <div>
-      <table>
-        <thead>
-          <tr class="d-flex">
-            <th>Tool</th>
-            <th>Research Field</th>
-            <th>SLR Task</th>
-            <th style="padding: 0px 100px;">Approach</th>
-            <th>Text Representation</th>
-            <th>Input</th>
-            <th style="padding: 0px 100px;">Output</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>RobotReviewer/RobotSearch</td>
-            <td>Biomedical</td>
-            <td>Identifies risks of bias: how reliable are the results?</td>
-            <td>ML classifier, combining a lineal model and a Convolutional Neural Network (CNN) model. <br> These
-              models are trained on a dataset containing manually annotated sentences stating the level of bias.</td>
-            <td>Bag of word: ngrams.<br> Embeddings: embedding layer from CNN Model.</td>
-            <td>Full-text paper.</td>
-            <td>Risk of bias classification (as Low, High, Unclear)</td>
-          </tr>
-          <tr>
-            <td>ExaCT</td>
-            <td>Biomedical</td>
-            <td>NER of Randomised Controlled Trials</td>
-            <td>Task 1: ML classifier based on SVM to identify sentences regarding a control trial.<br> Task 2: Rule
-              base detection to identify the 21 CONSORT categories.</td>
-            <td>Bag of words: ngrams.</td>
-            <td>Full-text paper.</td>
-            <td>Possible RCT entities</td>
-          </tr>
-          <tr>
-            <td>Dextr</td>
-            <td>Environmental Health Science</td>
-            <td>Task 1: NER of animal studies.<br> Task 2: Entity linking of animal studies.</td>
-            <td>Task 1: ML Classifier implementing a neural network model based on bidirectional LSTM with a Conditional
-              Random Field (BI-LSTM-CRF) architecture.<br> Task 2: Linking according to a customised ontology</td>
-            <td>Task 1: Embeddings: GloVe, ELMo.<br> Task 2: Not Applicable.</td>
-            <td>Title and Abstracts</td>
-            <td>Task 1: Possible animal entities.<br> Task 2: Relationships of animal models and exposures vs
-              experimentas ot endpoints vs experiments.</td>
-          </tr>
-          <tr>
-            <td>Iris.ai</td>
-            <td>Any</td>
-            <td>Task 1: NER of entities selected by the user.<br> Task 2: Entity linking of the identified entities.
-            </td>
-            <td>Task 1: ML classifier. Algorithim is unknown.<br> Task 2: Uses a knowledge graph to represent the
-              relations of within the entities on the paper or between the entities of the table. The technical
-              implementation is unknown.</td>
-            <td>Task 1: Embeddings: word embedding.<br> Task 2: Not Applicable.</td>
-            <td>Full-text paper.</td>
-            <td>Task 1: Possible entities based on a confidence interval.<br> Task 2: Additional semantics on the
-              extracted entities.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
-      class="btn btn-primary mt-5" role="button">Download Table</a>
+    <figure id="figure_1">
+      <p>
+        <img src="figures/PRISMA_SLR_Tools_02-SLR Tools Final 01300.png" alt="alternative text" />
+      </p>
+      <figcaption>PRISMA Diagram of our SLR about AI-enhanced SLR Tools.</figcaption>
+    </figure>
+    <figure id="figure_2.1">
+      <p>
+        <img src="figures/Interface_Relevant_ASReview300.png" alt="alternative text" />
+      </p>
+      <figcaption>ASReview. Examples of interfaces for paper classification.</figcaption>
+    </figure>
+    <figure id="figure_2.2">
+      <p>
+        <img src="figures/Interface_Relevant_RobotAnalyst300.png" alt="alternative text" />
+      </p>
+      <figcaption>RobotAnalyst. Examples of interfaces for paper classification.</figcaption>
+    </figure>
+    <figure id="figure_3">
+      <p>
+        <img src="figures/Colandr_Tutorial_Full-Text_Tagging300.png" alt="alternative text" />
+      </p>
+      <figcaption>Examples of the  tagging process of Colandr. This figure is courtesy of Colandr tutorial.</figcaption>
+    </figure>
+    <figure id="figure_4.1">
+      <p>
+        <img src="figures/RobotAnalyis_TopicModelling300.png" alt="alternative text" />
+      </p>
+      <figcaption>RobotAnalyst: Topic Modelling. Examples of interactive interfaces for pre-screening.</figcaption>
+    </figure>
+    <figure id="figure_4.2">
+      <p>
+        <img src="figures/SWIFT-Review_TopicModelling300.png" alt="alternative text" />
+      </p>
+      <figcaption>SWIFT-Review: Topic Modelling. Examples of interactive interfaces for pre-screening.</figcaption>
+    </figure>
+    <figure id="figure_4.3">
+      <p>
+        <img src="figures/IRIS.AI_Screening_Detail300.png" alt="alternative text" />
+      </p>
+      <figcaption>Iris.ai: Specific Topics. Examples of interactive interfaces for pre-screening.</figcaption>
+    </figure>
+    <figure id="figure_5.1">
+      <p>
+        <img src="figures/NestedKnowgled_Tagging300.png" alt="alternative text" />
+      </p>
+      <figcaption>Nested Knowledge: Hierarchical Ontology. Examples of interactive interface for the post-screening.</figcaption>
+    </figure>
+    <figure id="figure_5.1">
+      <p>
+        <img src="figures/NestedKnowgled_Qualitative_Synthesis300.png" alt="alternative text" />
+      </p>
+      <figcaption>Nested Knowledge: Qualitative Synthesis. Examples of interactive interface for the post-screening.</figcaption>
+    </figure>
+
+    <a href="#intro" class="btn btn-primary" role="button">Go up</a>
   </section>
-
-
-  <section id="third_table">
-    <h1>Systematic Literature Review Tools analysed based on General Features</h1>
-    <p></p>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Tool</th>
-            <th>Multiplatform</th>
-            <th>Multiple user roles</th>
-            <th>Multiple user support</th>
-            <th>Project auditing</th>
-            <th>Project progress</th>
-            <th>Authentication</th>
-            <th>Status of software</th>
-            <th>Automated full-text retrieval</th>
-            <th>Automated search</th>
-            <th>Snowballing</th>
-            <th>Manual reference importing</th>
-            <th>Manually attaching full-text</th>
-            <th>Reference importing</th>
-            <th>Deduplication</th>
-            <th>Discrepancy resolving</th>
-            <th>In-/excluding references</th>
-            <th>Reference labelling &amp; comments</th>
-            <th>Screening phases</th>
-            <th>Exporting results</th>
-            <th>Flow diagram creation</th>
-            <th>Protocol</th>
-            <th>Living/updatable</th>
-            <th>Free to use</th>
-            <th>SLR stage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Abstrackr</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>2</td>
-            <td>Yes</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>PMID; csv; xml</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract</td>
-            <td>csv; xml</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Colandr</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>2</td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>txt; ris; bib</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract</td>
-            <td>csv</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>DistillerSR</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>Yes</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>csv; enlx; ris; zip; zip(japic)</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract + Full Content</td>
-            <td>-</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>EPPI-Reviewer</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Detailed </td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>ris; PMID; ciw;</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract + Full Content</td>
-            <td>The screened papers go to the next stage which is information&nbsp;&nbsp;&nbsp;extraction</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>LitSuggest</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>PMID</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>tsv</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Nested Knowledge</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Detailed</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>Yes</td>
-            <td>PubMed; Europe PMC; DOAJ; ClinicalTrials.gov</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>nBIB; ris</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract</td>
-            <td>csv; ris</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Rayyan</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Detailed </td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>enw; xml; nbib; ciw; ris; bib; cvs</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract + Full Content</td>
-            <td>ris; bib; enw; csv</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>RobotAnalyst</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>txt; nbib; ris</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>ris</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>SWIFT-Active Screener</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Detailed </td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>PMID; xml; ris</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract + Full Content</td>
-            <td>csv; json</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>SWIFT-Review</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>PMID; xml</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>txt</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>FAST2</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>None</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>-</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>No export available</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>ASReview</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>&gt;1 </td>
-            <td>No</td>
-            <td>Detailed </td>
-            <td>None</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>ris; csv, xlsx; </td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>csv; tsv; ris</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Research Screener</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>xml</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>xml</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>pitts.ai</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>ris</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>No export available</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>SysRev.com</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>PubMed</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>pmid; ris; enlx; json</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract</td>
-            <td>xml; csv</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Covidence</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>No</td>
-            <td>Limited</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>xml; crs; ris</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract + Full Content</td>
-            <td>csv; ris</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>RobotReviewer /RobotSearch</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>None</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>pdf</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>No export available</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening + Extraction</td>
-          </tr>
-          <tr>
-            <td>Iris.ai</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>No</td>
-            <td>CORE; PubMed; US Patent Office; CORDIS</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>bibtex</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Title &amp; Abstract</td>
-            <td>-</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Screening + Extraction</td>
-          </tr>
-          <tr>
-            <td>PICO Portal</td>
-            <td>Yes</td>
-            <td>Multiple</td>
-            <td>&gt;1 </td>
-            <td>Yes</td>
-            <td>Detailed </td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>Yes</td>
-            <td>None</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>csv; bibtex; ris; enw; xml; xls; txt; ciw</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Title &amp; Abstract</td>
-            <td>-</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Screening</td>
-          </tr>
-          <tr>
-            <td>Dextr</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>NA</td>
-            <td>None</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>ris, pdf</td>
-            <td>NA</td>
-            <td>No</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>Not applicable</td>
-            <td>csv; zip</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>Yes</td>
-            <td>Extraction</td>
-          </tr>
-          <tr>
-            <td>ExaCT</td>
-            <td>Yes</td>
-            <td>Single</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
-            <td>Basic</td>
-            <td>Stable release</td>
-            <td>NA</td>
-            <td>None</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>xml</td>
-            <td>NA</td>
-            <td>No</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>Not applicable</td>
-            <td>No export available</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>NA</td>
-            <td>Yes</td>
-            <td>Extraction</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p>-: No information available<br>
-        NA: Not applicable because the tools are specifically for extraction</p>
-    </div>
-    <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/SLR Tools Analysis.xlsx"
-      class="btn btn-primary mt-5" role="button">Download Table</a>
-  </section>
-
 
   <section id="PRISMA_Checklist">
     <h1>PRISMA Checklist</h1>
-    <p>In the following table we report our PRISMA checklist, using the model from "Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. doi: 10.1136/bmj.n71".</p>
+    <p>In the following table we report our PRISMA checklist, using the model from "Page MJ, McKenzie JE, Bossuyt PM,
+      Boutron I, Hoffmann TC, Mulrow CD, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic
+      reviews. BMJ 2021;372:n71. doi: 10.1136/bmj.n71".</p>
     <div>
       <table>
         <thead>
@@ -1140,7 +1246,8 @@
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>1&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Identify&nbsp;&nbsp;&nbsp;the report as a systematic review.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Identify&nbsp;&nbsp;&nbsp;the report as a systematic review.&nbsp;&nbsp;&nbsp;
+            </td>
             <td>&nbsp;&nbsp;&nbsp;<br>1&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1150,7 +1257,8 @@
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Abstract&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>2&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>See&nbsp;&nbsp;&nbsp;the PRISMA 2020 for Abstracts checklist.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>See&nbsp;&nbsp;&nbsp;the PRISMA 2020 for Abstracts checklist.&nbsp;&nbsp;&nbsp;
+            </td>
             <td>&nbsp;&nbsp;&nbsp;<br>1&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1160,13 +1268,15 @@
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Rationale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>3&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the rationale for the review in the context of existing knowledge.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the rationale for the review in the context of existing
+              knowledge.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>2&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Objectives&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>4&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;an explicit statement of the objective(s) or question(s) the review&nbsp;&nbsp;&nbsp;addresses.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;an explicit statement of the objective(s) or question(s)
+              the review&nbsp;&nbsp;&nbsp;addresses.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>2&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1176,97 +1286,129 @@
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Eligibility&nbsp;&nbsp;&nbsp;criteria&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>5&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the inclusion and exclusion criteria for the review and how studies were&nbsp;&nbsp;&nbsp;grouped for the syntheses.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the inclusion and exclusion criteria for the review and
+              how studies were&nbsp;&nbsp;&nbsp;grouped for the syntheses.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>5&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Information&nbsp;&nbsp;&nbsp;sources&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>6&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;all databases, registers, websites, organisations, reference lists and other&nbsp;&nbsp;&nbsp;sources searched or consulted to identify studies. Specify the date when each&nbsp;&nbsp;&nbsp;source was last searched or consulted.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;all databases, registers, websites, organisations,
+              reference lists and other&nbsp;&nbsp;&nbsp;sources searched or consulted to identify studies. Specify the
+              date when each&nbsp;&nbsp;&nbsp;source was last searched or consulted.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>4,6,7, Appendix A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Search&nbsp;&nbsp;&nbsp;strategy&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>7&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;the full search strategies for all databases, registers and websites,&nbsp;&nbsp;&nbsp;including any filters and limits used.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;the full search strategies for all databases, registers
+              and websites,&nbsp;&nbsp;&nbsp;including any filters and limits used.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>5,6,7&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Selection&nbsp;&nbsp;&nbsp;process&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>8&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to decide whether a study met the inclusion criteria of the&nbsp;&nbsp;&nbsp;review, including how many reviewers screened each record and each report&nbsp;&nbsp;&nbsp;retrieved, whether they worked independently, and if applicable, details of&nbsp;&nbsp;&nbsp;automation tools used in the process.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to decide whether a study met the
+              inclusion criteria of the&nbsp;&nbsp;&nbsp;review, including how many reviewers screened each record and
+              each report&nbsp;&nbsp;&nbsp;retrieved, whether they worked independently, and if applicable, details
+              of&nbsp;&nbsp;&nbsp;automation tools used in the process.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>6&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Data&nbsp;&nbsp;&nbsp;collection process&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>9&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to collect data from reports, including how many reviewers&nbsp;&nbsp;&nbsp;collected data from each report, whether they worked independently, any&nbsp;&nbsp;&nbsp;processes for obtaining or confirming data from study investigators, and if&nbsp;&nbsp;&nbsp;applicable, details of automation tools used in the process.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to collect data from reports, including
+              how many reviewers&nbsp;&nbsp;&nbsp;collected data from each report, whether they worked independently,
+              any&nbsp;&nbsp;&nbsp;processes for obtaining or confirming data from study investigators, and
+              if&nbsp;&nbsp;&nbsp;applicable, details of automation tools used in the process.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>6,23&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td rowspan="2">&nbsp;&nbsp;&nbsp;<br>Data&nbsp;&nbsp;&nbsp;items&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>10a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>List&nbsp;&nbsp;&nbsp;and define all outcomes for which data were sought. Specify whether all&nbsp;&nbsp;&nbsp;results that were compatible with each outcome domain in each study were&nbsp;&nbsp;&nbsp;sought (e.g. for all measures, time points, analyses), and if not, the&nbsp;&nbsp;&nbsp;methods used to decide which results to collect.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>List&nbsp;&nbsp;&nbsp;and define all outcomes for which data were sought. Specify
+              whether all&nbsp;&nbsp;&nbsp;results that were compatible with each outcome domain in each study
+              were&nbsp;&nbsp;&nbsp;sought (e.g. for all measures, time points, analyses), and if not,
+              the&nbsp;&nbsp;&nbsp;methods used to decide which results to collect.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>10b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>List&nbsp;&nbsp;&nbsp;and define all other variables for which data were sought (e.g. participant&nbsp;&nbsp;&nbsp;and intervention characteristics, funding sources). Describe any assumptions&nbsp;&nbsp;&nbsp;made about any missing or unclear information.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>List&nbsp;&nbsp;&nbsp;and define all other variables for which data were sought
+              (e.g. participant&nbsp;&nbsp;&nbsp;and intervention characteristics, funding sources). Describe any
+              assumptions&nbsp;&nbsp;&nbsp;made about any missing or unclear information.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>8,9,10,11&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Study&nbsp;&nbsp;&nbsp;risk of bias assessment&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>11&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to assess risk of bias in the included studies, including&nbsp;&nbsp;&nbsp;details of the tool(s) used, how many reviewers assessed each study and&nbsp;&nbsp;&nbsp;whether they worked independently, and if applicable, details of automation&nbsp;&nbsp;&nbsp;tools used in the process.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;the methods used to assess risk of bias in the included
+              studies, including&nbsp;&nbsp;&nbsp;details of the tool(s) used, how many reviewers assessed each study
+              and&nbsp;&nbsp;&nbsp;whether they worked independently, and if applicable, details of
+              automation&nbsp;&nbsp;&nbsp;tools used in the process.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>6&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Effect&nbsp;&nbsp;&nbsp;measures&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>12&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;for each outcome the effect measure(s) (e.g. risk ratio, mean difference)&nbsp;&nbsp;&nbsp;used in the synthesis or presentation of results.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Specify&nbsp;&nbsp;&nbsp;for each outcome the effect measure(s) (e.g. risk ratio,
+              mean difference)&nbsp;&nbsp;&nbsp;used in the synthesis or presentation of results.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td rowspan="6">&nbsp;&nbsp;&nbsp;<br>Synthesis&nbsp;&nbsp;&nbsp;methods&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>13a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the processes used to decide which studies were eligible for each synthesis&nbsp;&nbsp;&nbsp;(e.g. tabulating the study intervention characteristics and comparing against&nbsp;&nbsp;&nbsp;the planned groups for each synthesis (item #5)).&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the processes used to decide which studies were eligible
+              for each synthesis&nbsp;&nbsp;&nbsp;(e.g. tabulating the study intervention characteristics and comparing
+              against&nbsp;&nbsp;&nbsp;the planned groups for each synthesis (item #5)).&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>23&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>13b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods required to prepare the data for presentation or synthesis, such&nbsp;&nbsp;&nbsp;as handling of missing summary statistics, or data conversions.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods required to prepare the data for
+              presentation or synthesis, such&nbsp;&nbsp;&nbsp;as handling of missing summary statistics, or data
+              conversions.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>13c&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to tabulate or visually display results of individual&nbsp;&nbsp;&nbsp;studies and syntheses.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to tabulate or visually display results
+              of individual&nbsp;&nbsp;&nbsp;studies and syntheses.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>13d&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to synthesize results and provide a rationale for the&nbsp;&nbsp;&nbsp;choice(s). If meta-analysis was performed, describe the model(s), method(s)&nbsp;&nbsp;&nbsp;to identify the presence and extent of statistical heterogeneity, and&nbsp;&nbsp;&nbsp;software package(s) used.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to synthesize results and provide a
+              rationale for the&nbsp;&nbsp;&nbsp;choice(s). If meta-analysis was performed, describe the model(s),
+              method(s)&nbsp;&nbsp;&nbsp;to identify the presence and extent of statistical heterogeneity,
+              and&nbsp;&nbsp;&nbsp;software package(s) used.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>13e&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to explore possible causes of heterogeneity among study&nbsp;&nbsp;&nbsp;results (e.g. subgroup analysis, meta-regression).&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to explore possible causes of
+              heterogeneity among study&nbsp;&nbsp;&nbsp;results (e.g. subgroup analysis,
+              meta-regression).&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>13f&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any sensitivity analyses conducted to assess robustness of the synthesized&nbsp;&nbsp;&nbsp;results.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any sensitivity analyses conducted to assess robustness
+              of the synthesized&nbsp;&nbsp;&nbsp;results.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Reporting&nbsp;&nbsp;&nbsp;bias assessment&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>14&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to assess risk of bias due to missing results in a synthesis&nbsp;&nbsp;&nbsp;(arising from reporting biases).&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to assess risk of bias due to missing
+              results in a synthesis&nbsp;&nbsp;&nbsp;(arising from reporting biases).&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>21, Interview&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Certainty&nbsp;&nbsp;&nbsp;assessment&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>15&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to assess certainty (or confidence) in the body of evidence&nbsp;&nbsp;&nbsp;for an outcome.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;any methods used to assess certainty (or confidence) in
+              the body of evidence&nbsp;&nbsp;&nbsp;for an outcome.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>NA&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1276,63 +1418,79 @@
           <tr>
             <td rowspan="2">&nbsp;&nbsp;&nbsp;<br>Study&nbsp;&nbsp;&nbsp;selection&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>16a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the results of the search and selection process, from the number of records identified&nbsp;&nbsp;&nbsp;in the search to the number of studies included in the review, ideally using&nbsp;&nbsp;&nbsp;a flow diagram.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;the results of the search and selection process, from
+              the number of records identified&nbsp;&nbsp;&nbsp;in the search to the number of studies included in the
+              review, ideally using&nbsp;&nbsp;&nbsp;a flow diagram.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Fig 1&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>16b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Cite&nbsp;&nbsp;&nbsp;studies that might appear to meet the inclusion criteria, but which were&nbsp;&nbsp;&nbsp;excluded, and explain why they were excluded.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Cite&nbsp;&nbsp;&nbsp;studies that might appear to meet the inclusion criteria,
+              but which were&nbsp;&nbsp;&nbsp;excluded, and explain why they were excluded.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>7&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Study&nbsp;&nbsp;&nbsp;characteristics&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>17&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Cite&nbsp;&nbsp;&nbsp;each included study and present its characteristics.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Cite&nbsp;&nbsp;&nbsp;each included study and present its
+              characteristics.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Appendix C&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Risk&nbsp;&nbsp;&nbsp;of bias in studies&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>18&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of risk of bias for each included study.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of risk of bias for each included
+              study.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Results&nbsp;&nbsp;&nbsp;of individual studies&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>19&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>For&nbsp;&nbsp;&nbsp;all outcomes, present, for each study: (a) summary statistics for each group&nbsp;&nbsp;&nbsp;(where appropriate) and (b) an effect estimates and its precision (e.g.&nbsp;&nbsp;&nbsp;confidence/credible interval), ideally using structured tables or plots.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>For&nbsp;&nbsp;&nbsp;all outcomes, present, for each study: (a) summary statistics
+              for each group&nbsp;&nbsp;&nbsp;(where appropriate) and (b) an effect estimates and its precision
+              (e.g.&nbsp;&nbsp;&nbsp;confidence/credible interval), ideally using structured tables or
+              plots.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Appendix C&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td rowspan="4">&nbsp;&nbsp;&nbsp;<br>Results&nbsp;&nbsp;&nbsp;of syntheses&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>20a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>For&nbsp;&nbsp;&nbsp;each synthesis, briefly summarise the characteristics and risk of bias among&nbsp;&nbsp;&nbsp;contributing studies.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>For&nbsp;&nbsp;&nbsp;each synthesis, briefly summarise the characteristics and
+              risk of bias among&nbsp;&nbsp;&nbsp;contributing studies.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>12-21&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>20b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all statistical syntheses conducted. If meta-analysis was done,&nbsp;&nbsp;&nbsp;present for each the summary estimate and its precision (e.g.&nbsp;&nbsp;&nbsp;confidence/credible interval) and measures of statistical heterogeneity. If&nbsp;&nbsp;&nbsp;comparing groups, describe the direction of the effect.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all statistical syntheses conducted. If
+              meta-analysis was done,&nbsp;&nbsp;&nbsp;present for each the summary estimate and its precision
+              (e.g.&nbsp;&nbsp;&nbsp;confidence/credible interval) and measures of statistical heterogeneity.
+              If&nbsp;&nbsp;&nbsp;comparing groups, describe the direction of the effect.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Table 5&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>20c&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all investigations of possible causes of heterogeneity among study&nbsp;&nbsp;&nbsp;results.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all investigations of possible causes of
+              heterogeneity among study&nbsp;&nbsp;&nbsp;results.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>20d&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all sensitivity analyses conducted to assess the robustness of the&nbsp;&nbsp;&nbsp;synthesized results.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;results of all sensitivity analyses conducted to assess
+              the robustness of the&nbsp;&nbsp;&nbsp;synthesized results.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Reporting&nbsp;&nbsp;&nbsp;biases&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>21&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of risk of bias due to missing results (arising from reporting&nbsp;&nbsp;&nbsp;biases) for each synthesis assessed.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of risk of bias due to missing results
+              (arising from reporting&nbsp;&nbsp;&nbsp;biases) for each synthesis assessed.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Certainty&nbsp;&nbsp;&nbsp;of evidence&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>22&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of certainty (or confidence) in the body of evidence for each&nbsp;&nbsp;&nbsp;outcome assessed.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Present&nbsp;&nbsp;&nbsp;assessments of certainty (or confidence) in the body of
+              evidence for each&nbsp;&nbsp;&nbsp;outcome assessed.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1342,22 +1500,26 @@
           <tr>
             <td rowspan="4">&nbsp;&nbsp;&nbsp;<br>Discussion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>23a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;a general interpretation of the results in the context of other evidence.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;a general interpretation of the results in the context of
+              other evidence.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>24-28&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>23b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;any limitations of the evidence included in the review.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;any limitations of the evidence included in the
+              review.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>21-24&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>23c&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;any limitations of the review processes used.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;any limitations of the review processes
+              used.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>21-24&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>23d&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;implications of the results for practice, policy, and future research.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Discuss&nbsp;&nbsp;&nbsp;implications of the results for practice, policy, and
+              future research.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>28-31&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
@@ -1367,45 +1529,64 @@
           <tr>
             <td rowspan="3">&nbsp;&nbsp;&nbsp;<br>Registration&nbsp;&nbsp;&nbsp;and protocol&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>24a&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;registration information for the review, including register name and&nbsp;&nbsp;&nbsp;registration number, or state that the review was not registered.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Provide&nbsp;&nbsp;&nbsp;registration information for the review, including
+              register name and&nbsp;&nbsp;&nbsp;registration number, or state that the review was not
+              registered.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Not registered&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>24b&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Indicate&nbsp;&nbsp;&nbsp;where the review protocol can be accessed, or state that a protocol was not&nbsp;&nbsp;&nbsp;prepared.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Indicate&nbsp;&nbsp;&nbsp;where the review protocol can be accessed, or state that
+              a protocol was not&nbsp;&nbsp;&nbsp;prepared.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Pending&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>24c&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;and explain any amendments to information provided at registration or in the&nbsp;&nbsp;&nbsp;protocol.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;and explain any amendments to information provided at
+              registration or in the&nbsp;&nbsp;&nbsp;protocol.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Support&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>25&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;sources of financial or non-financial support for the review, and the role of&nbsp;&nbsp;&nbsp;the funders or sponsors in the review.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Describe&nbsp;&nbsp;&nbsp;sources of financial or non-financial support for the
+              review, and the role of&nbsp;&nbsp;&nbsp;the funders or sponsors in the review.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>N/A&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;&nbsp;&nbsp;<br>Competing&nbsp;&nbsp;&nbsp;interests&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>26&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Declare&nbsp;&nbsp;&nbsp;any competing interests of review authors.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Declare&nbsp;&nbsp;&nbsp;any competing interests of review
+              authors.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Pending&nbsp;&nbsp;&nbsp;</td>
           </tr>
           <tr>
-            <td>&nbsp;&nbsp;&nbsp;<br>Availability&nbsp;&nbsp;&nbsp;of data, code and other materials&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Availability&nbsp;&nbsp;&nbsp;of data, code and other materials&nbsp;&nbsp;&nbsp;
+            </td>
             <td>&nbsp;&nbsp;&nbsp;<br>27&nbsp;&nbsp;&nbsp;</td>
-            <td>&nbsp;&nbsp;&nbsp;<br>Report&nbsp;&nbsp;&nbsp;which of the following are publicly available and where they can be found:&nbsp;&nbsp;&nbsp;template data collection forms; data extracted from included studies; data&nbsp;&nbsp;&nbsp;used for all analyses; analytic code; any other materials used in the review.&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;<br>Report&nbsp;&nbsp;&nbsp;which of the following are publicly available and where
+              they can be found:&nbsp;&nbsp;&nbsp;template data collection forms; data extracted from included studies;
+              data&nbsp;&nbsp;&nbsp;used for all analyses; analytic code; any other materials used in the
+              review.&nbsp;&nbsp;&nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;<br>Appendix A,B,C, Script&nbsp;&nbsp;&nbsp;</td>
           </tr>
         </tbody>
-        </table>
+      </table>
     </div>
-    <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a href="./files/PRISMA_2020_checklist_SLR_Tools.docx"
-      class="btn btn-primary mt-5" role="button">Download Table</a>
+    <a href="#intro" class="btn btn-primary mt-5" role="button">Go up</a> <a
+      href="./files/PRISMA_2020_checklist_SLR_Tools.docx" class="btn btn-primary mt-5" role="button">Download Table</a>
   </section>
 
 
+  <section id="codebase">
+    <h1>Codebase</h1>
+    <p>
+      Here is the codebase we developed for the snowballing search on Semantic Scholar.
+    </p>
+    <a href="#intro" class="btn btn-primary" role="button">Go up</a>
+    <a href="https://zenodo.org/records/11154875" class="btn btn-primary" role="button">Explore code (opens on
+      Zenodo.org)</a>
+  </section>
 
   <section id="howtocite">
     <h1>How to cite</h1>
